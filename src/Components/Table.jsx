@@ -21,7 +21,6 @@ import {
   SheetDescription,
   SheetHeader,
   SheetTitle,
-  // SheetTrigger,
 } from "@/components/ui/sheet";
 import { useState } from "react";
 import { Input } from "./ui/input";
@@ -83,21 +82,54 @@ const TableData = [
 ];
 
 export function TableDemo() {
+
+  const [userTable , setUserTable] = useState(TableData)
+  const [isSheetOpen, setSheetOpen] = useState(false);
+  const [ setSelectedUser] = useState({});
+  const [isDilogboxOpen, setDilogBox] = useState(false);
+  const [userToDelete , setUserToDelete] = useState(null)
+  const [updateUser , setUpdateUser] = useState({name: "", email: "", city: ""})
+
   const handleEditClick = (user) => {
     console.log(user);
-    setSheetOpen(true)
-    setSelectedUser(user)
+    setSheetOpen(true);
+    setSelectedUser(user);
+    console.log("123",setSelectedUser);
+    setUpdateUser(user)
     
   };
   const handleDelete = (user) => {
-    console.log(user)
-    setDilogBox(true)
-
+    console.log(user);
+    
+    setUserToDelete(user)
+    setDilogBox(true);
+    console.log(user);
   };
-  // 
-  const [isSheetOpen , setSheetOpen] = useState(false)
-  const [selectedUser , setSelectedUser] = useState({})
-  const [isDilogboxOpen , setDilogBox] = useState(false)
+  const handleDeleteUsr = ()=>{
+    if (userToDelete) {
+      const delItem = userTable.filter((item) => item.id !== userToDelete.id);
+      setUserTable(delItem)
+      setDilogBox(false)
+    }
+
+  }
+
+  const handleChange = (e)=>{
+    const {name , value} = e.target
+    setUpdateUser((prev)=> ({...prev, [name]: value}))
+
+  }
+  const handleUpdateUser = ()=>{
+    if(updateUser){
+      const updateitem = userTable.map((item)=>
+        item.id === updateUser.id ? updateUser : item
+      )
+      setUserTable(updateitem)
+      setSheetOpen(false)
+
+    }
+
+  }
 
   return (
     <>
@@ -112,9 +144,9 @@ export function TableDemo() {
           </TableRow>
         </TableHeader>
         <TableBody>
-          {TableData.length > 0 ? (
-            TableData.map((item, index) => (
-              <TableRow key={index}>
+          {userTable.length > 0 ? (
+            userTable.map((item) => (
+              <TableRow key={item.id}>
                 <TableCell className="font-medium">{item.id}</TableCell>
                 <TableCell>{item.name}</TableCell>
                 <TableCell>{item.email}</TableCell>
@@ -154,16 +186,25 @@ export function TableDemo() {
           )}
         </TableBody>
       </Table>
-      <Dialog  open={isDilogboxOpen} onOpenChange={setDilogBox} >
+      <Dialog open={isDilogboxOpen} onOpenChange={setDilogBox}>
         <DialogContent>
           <DialogHeader>
-            <DialogTitle>Are you absolutely sure to delete this user</DialogTitle>
+            <DialogTitle>
+              Are you absolutely sure to delete this user
+            </DialogTitle>
             <div className="flex gap-5 py-4 justify-center">
-
-            <Button className="w-14 bg-red-800">Yes</Button>
-            <Button className="w-14 bg-red-800">No</Button>
+              <Button className="w-14 bg-red-800" onClick={handleDeleteUsr}>
+                Yes
+              </Button>
+              <Button
+                className="w-14 bg-red-800"
+                onClick={() => {
+                  setDilogBox(false);
+                }}
+              >
+                No
+              </Button>
             </div>
-            
           </DialogHeader>
         </DialogContent>
       </Dialog>
@@ -177,10 +218,25 @@ export function TableDemo() {
               account and remove your data from our servers.
             </SheetDescription>
             <input type="text" />
-            <Input type="text" name="name" value={selectedUser.name} />
-            <Input type="email" name="email" value={selectedUser.email} />
-            <Input type="text" name=" city" value={selectedUser.city} />
-            <Button>Edit user</Button>
+            <Input
+              type="text"
+              name="name"
+              value={updateUser.name}
+              onChange={handleChange}
+            />
+            <Input
+              type="email"
+              name="email"
+              value={updateUser.email}
+              onChange={handleChange}
+            />
+            <Input
+              type="text"
+              name=" city"
+              value={updateUser.city}
+              onChange={handleChange}
+            />
+            <Button onClick={handleUpdateUser}>Edit user</Button>
           </SheetHeader>
         </SheetContent>
       </Sheet>
