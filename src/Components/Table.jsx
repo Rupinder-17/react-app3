@@ -21,9 +21,19 @@ import {
   SheetDescription,
   SheetHeader,
   SheetTitle,
-  SheetTrigger,
+  // SheetTrigger,
 } from "@/components/ui/sheet";
 import { useState } from "react";
+import { Input } from "./ui/input";
+import { Button } from "./ui/button";
+
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
+
 
 
 const TableData = [
@@ -69,44 +79,27 @@ const TableData = [
     email: "rupinder@example.com",
     city: "Los Angeles",
   },
-  // {
-  //    id: 7,
-  //   name: "Raman",
-  //   age: 25,
-  //   email: "raman@example.com",
-  //   city: "New York",
-  // },
-  // {
-  //   id: 8,
-  //   name: "Rupinder",
-  //   age: 28,
-  //   email: "rupinder@example.com",
-  //   city: "Los Angeles",
-  // }
+  
 ];
 
 export function TableDemo() {
-  // const filteredData = TableData.filter(
-  //   (item) =>
-  //     item.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-  //     item.email.toLowerCase().includes(searchTerm.toLowerCase()) ||
-  //     item.city.toLowerCase().includes(searchTerm.toLowerCase())
-  // );
-  // const [sheet, setSheet] = useState(false)
-  // console.log("sheet",sheet);
   const handleEditClick = (user) => {
     console.log(user);
     setSheetOpen(true)
     setSelectedUser(user)
+    
   };
   const handleDelete = (user) => {
-    console.log(user);
+    console.log(user)
+    setDilogBox(true)
+
   };
+  // 
   const [isSheetOpen , setSheetOpen] = useState(false)
   const [selectedUser , setSelectedUser] = useState({})
+  const [isDilogboxOpen , setDilogBox] = useState(false)
 
   return (
-
     <>
       <Table>
         <TableHeader>
@@ -147,7 +140,7 @@ export function TableDemo() {
                           handleDelete(item);
                         }}
                       >
-                        Delete User
+                        Delete user
                       </DropdownMenuItem>
                     </DropdownMenuContent>
                   </DropdownMenu>
@@ -161,17 +154,33 @@ export function TableDemo() {
           )}
         </TableBody>
       </Table>
-      <Sheet open={isSheetOpen} onOpenChange={setSheetOpen} >
-        <SheetTrigger>Edit</SheetTrigger>
+      <Dialog  open={isDilogboxOpen} onOpenChange={setDilogBox} >
+        <DialogContent>
+          <DialogHeader>
+            <DialogTitle>Are you absolutely sure to delete this user</DialogTitle>
+            <div className="flex gap-5 py-4 justify-center">
+
+            <Button className="w-14 bg-red-800">Yes</Button>
+            <Button className="w-14 bg-red-800">No</Button>
+            </div>
+            
+          </DialogHeader>
+        </DialogContent>
+      </Dialog>
+
+      <Sheet open={isSheetOpen} onOpenChange={setSheetOpen}>
         <SheetContent>
           <SheetHeader>
             <SheetTitle>Are you absolutely sure?</SheetTitle>
-            
             <SheetDescription>
               This action cannot be undone. This will permanently delete your
               account and remove your data from our servers.
             </SheetDescription>
-            <input type="text" value={selectedUser.name} />
+            <input type="text" />
+            <Input type="text" name="name" value={selectedUser.name} />
+            <Input type="email" name="email" value={selectedUser.email} />
+            <Input type="text" name=" city" value={selectedUser.city} />
+            <Button>Edit user</Button>
           </SheetHeader>
         </SheetContent>
       </Sheet>
