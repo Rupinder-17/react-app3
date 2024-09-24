@@ -16,9 +16,9 @@ export const AgeCount = () => {
         <p className="text-4xl">{age.name}:</p>
         <Button
           onClick={() => {
-            setAge((p) => ({
-              ...p,
-              age: p.age + 1,
+            setAge((prev) => ({
+              ...prev,
+              age: prev.age + 1,
             }));
           }}
         >

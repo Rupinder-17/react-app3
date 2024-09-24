@@ -15,7 +15,7 @@ createRoot(document.getElementById('root')).render(
     {/* <Display/> */}
     {/* <SecondComponent/> */}
     {/* <AgeCount/> */}
-    <TableDashboard/>
+    <TableDashboard/>/
     {/* <AutocompleteExample/> */}
   </StrictMode>,
   
