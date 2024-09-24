@@ -33,8 +33,6 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 
-
-
 const TableData = [
   {
     id: 1,
@@ -78,58 +76,57 @@ const TableData = [
     email: "rupinder@example.com",
     city: "Los Angeles",
   },
-  
 ];
 
 export function TableDemo() {
 
-  const [userTable , setUserTable] = useState(TableData)
+  const [userTable, setUserTable] = useState(TableData);
   const [isSheetOpen, setSheetOpen] = useState(false);
-  const [ setSelectedUser] = useState({});
+  const [setSelectedUser] = useState({});
   const [isDilogboxOpen, setDilogBox] = useState(false);
-  const [userToDelete , setUserToDelete] = useState(null)
-  const [updateUser , setUpdateUser] = useState({name: "", email: "", city: ""})
+  const [userToDelete, setUserToDelete] = useState(null);
+  const [updateUser, setUpdateUser] = useState({
+    name: "",
+    email: "",
+    city: "",
+  });
 
   const handleEditClick = (user) => {
     console.log(user);
     setSheetOpen(true);
     setSelectedUser(user);
-    console.log("123",setSelectedUser);
-    setUpdateUser(user)
-    
+    console.log("123", setSelectedUser);
+    setUpdateUser(user);
   };
+
   const handleDelete = (user) => {
     console.log(user);
-    
-    setUserToDelete(user)
+    setUserToDelete(user);
     setDilogBox(true);
     console.log(user);
   };
-  const handleDeleteUsr = ()=>{
+  
+  const handleDeleteUsr = () => {
     if (userToDelete) {
       const delItem = userTable.filter((item) => item.id !== userToDelete.id);
-      setUserTable(delItem)
-      setDilogBox(false)
+      setUserTable(delItem);
+      setDilogBox(false);
     }
+  };
 
-  }
-
-  const handleChange = (e)=>{
-    const {name , value} = e.target
-    setUpdateUser((prev)=> ({...prev, [name]: value}))
-
-  }
-  const handleUpdateUser = ()=>{
-    if(updateUser){
-      const updateitem = userTable.map((item)=>
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setUpdateUser((prev) => ({ ...prev, [name]: value }));
+  };
+  const handleUpdateUser = () => {
+    if (updateUser) {
+      const updateitem = userTable.map((item) =>
         item.id === updateUser.id ? updateUser : item
-      )
-      setUserTable(updateitem)
-      setSheetOpen(false)
-
+      );
+      setUserTable(updateitem);
+      setSheetOpen(false);
     }
-
-  }
+  };
 
   return (
     <>
