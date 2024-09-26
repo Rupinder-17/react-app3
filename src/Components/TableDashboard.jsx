@@ -25,8 +25,68 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { IoMdCheckmark } from "react-icons/io";
 import { Footer } from "./Footer";
+import { Button } from "./ui/button";
+import { useState } from "react";
 
 export const TableDashboard = () => {
+  const TableData = [
+    {
+      id: 1,
+      name: "Raman",
+      age: 25,
+      email: "raman@example.com",
+      city: "New York",
+    },
+    {
+      id: 2,
+      name: "Rupinder",
+      age: 28,
+      email: "rupinder@example.com",
+      city: "Los Angeles",
+    },
+    {
+      id: 3,
+      name: "Aman",
+      age: 28,
+      email: "aman@example.com",
+      city: "San Francisco",
+    },
+    {
+      id: 4,
+      name: "Sonia",
+      age: 24,
+      email: "sonia@example.com",
+      city: "Chicago",
+    },
+    {
+      id: 5,
+      name: "Raman",
+      age: 25,
+      email: "raman@example.com",
+      city: "New York",
+    },
+    {
+      id: 6,
+      name: "Rupinder",
+      age: 28,
+      email: "rupinder@example.com",
+      city: "Los Angeles",
+    },
+  ];
+
+  const [checkedUsers, setCheckedUsers] = useState([]);
+  const [userTable, setUserTable] = useState(TableData);
+  console.log(userTable);
+
+  console.log(checkedUsers);
+  
+  const handlecheckeditem = () => {
+    setUserTable((prev) =>
+      prev.filter((user) => !checkedUsers.includes(user.id))
+    );
+    setCheckedUsers([]);
+  };
+
   return (
     <div>
       <div className=" flex w-full">
@@ -34,7 +94,7 @@ export const TableDashboard = () => {
           <Admin />
         </div>
         <div className="w-[85%]">
-          <div className="flex gap-5 justify-between  px-5 w-  sticky top-0 z-50   ">
+          <div className="flex gap-5 justify-between  px-5   sticky top-0 z-50 ">
             <Input placeholder="Search..." className="w-96" />
             <div className="flex gap-3">
               <span>John Doe</span>
@@ -70,8 +130,8 @@ export const TableDashboard = () => {
               </div>
             </div>
           </div>
-          <div className="bg-gray-100 h-fit  mt-3">
-            <div className=" font-medium ml-20 py-6">
+          <div className="bg-gray-100   mt-1">
+            <div className=" font-medium ml-20 py-3">
               <BreadcrumbDemo />
             </div>
             <div className="">
@@ -79,6 +139,9 @@ export const TableDashboard = () => {
               <div className="bg-white rounded-lg ml-20 mr-20 shadow-lg">
                 <div className="flex justify-between  items-center mt-2 py-2 px-3">
                   <p className="font-medium">Users</p>
+                  <Button className="" onClick={handlecheckeditem}>
+                    Delete Items
+                  </Button>
                   <div className="flex gap-5">
                     <Input
                       type="search"
@@ -113,10 +176,14 @@ export const TableDashboard = () => {
                     </DropdownMenu>
                   </div>
                 </div>
-                <TableDemo />
+                <TableDemo
+                  selectCheckedUsers={setCheckedUsers}
+                  dataTable={userTable}
+                  setUserTable={setUserTable}
+                />
               </div>
               <div className="flex justify-between text-sm  px-5 items-center">
-                <p className="text-gray-500 ml-16 py-5">
+                <p className="text-gray-500 ml-16 py-3">
                   Showind 1 to 5 of 12 entries
                 </p>
                 <div>

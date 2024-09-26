@@ -33,56 +33,9 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 
-const TableData = [
-  {
-    id: 1,
-    name: "Raman",
-    age: 25,
-    email: "raman@example.com",
-    city: "New York",
-  },
-  {
-    id: 2,
-    name: "Rupinder",
-    age: 28,
-    email: "rupinder@example.com",
-    city: "Los Angeles",
-  },
-  {
-    id: 3,
-    name: "Aman",
-    age: 28,
-    email: "aman@example.com",
-    city: "San Francisco",
-  },
-  {
-    id: 4,
-    name: "Sonia",
-    age: 24,
-    email: "sonia@example.com",
-    city: "Chicago",
-  },
-  {
-    id: 5,
-    name: "Raman",
-    age: 25,
-    email: "raman@example.com",
-    city: "New York",
-  },
-  {
-    id: 6,
-    name: "Rupinder",
-    age: 28,
-    email: "rupinder@example.com",
-    city: "Los Angeles",
-  },
-];
-
-export function TableDemo() {
-
-  const [userTable, setUserTable] = useState(TableData);
+export function TableDemo({ selectCheckedUsers, dataTable, setUserTable }) {
   const [isSheetOpen, setSheetOpen] = useState(false);
-  const [setSelectedUser] = useState({});
+  const [, setSelectedUser] = useState({});
   const [isDilogboxOpen, setDilogBox] = useState(false);
   const [userToDelete, setUserToDelete] = useState(null);
   const [updateUser, setUpdateUser] = useState({
@@ -105,10 +58,10 @@ export function TableDemo() {
     setDilogBox(true);
     console.log(user);
   };
-  
+
   const handleDeleteUsr = () => {
     if (userToDelete) {
-      const delItem = userTable.filter((item) => item.id !== userToDelete.id);
+      const delItem = dataTable.filter((item) => item.id !== userToDelete.id);
       setUserTable(delItem);
       setDilogBox(false);
     }
@@ -118,14 +71,22 @@ export function TableDemo() {
     const { name, value } = e.target;
     setUpdateUser((prev) => ({ ...prev, [name]: value }));
   };
+
   const handleUpdateUser = () => {
     if (updateUser) {
-      const updateitem = userTable.map((item) =>
+      const updateitem = dataTable.map((item) =>
         item.id === updateUser.id ? updateUser : item
       );
       setUserTable(updateitem);
       setSheetOpen(false);
     }
+  };
+
+  const handleCheckboxChange = (id) => {
+    
+    selectCheckedUsers((element) => [...element, id]);
+
+    // element.includes(id) ? element.filter((itemId) => itemId !== id) : [...element] );
   };
 
   return (
@@ -134,6 +95,7 @@ export function TableDemo() {
         <TableHeader>
           <TableRow>
             <TableHead className="">ID</TableHead>
+            <TableHead className=""></TableHead>
             <TableHead>Name</TableHead>
             <TableHead>Email</TableHead>
             <TableHead>City</TableHead>
@@ -141,10 +103,19 @@ export function TableDemo() {
           </TableRow>
         </TableHeader>
         <TableBody>
-          {userTable.length > 0 ? (
-            userTable.map((item) => (
+          {dataTable.length > 0 ? (
+            dataTable.map((item) => (
               <TableRow key={item.id}>
+                <TableCell className="font-medium">
+                  <Input
+                    type="checkbox"
+                    name="checkbox"
+                    className="w-4"
+                    onChange={() => handleCheckboxChange(item.id)}
+                  />
+                </TableCell>
                 <TableCell className="font-medium">{item.id}</TableCell>
+
                 <TableCell>{item.name}</TableCell>
                 <TableCell>{item.email}</TableCell>
                 <TableCell>{item.city}</TableCell>
@@ -214,7 +185,6 @@ export function TableDemo() {
               This action cannot be undone. This will permanently delete your
               account and remove your data from our servers.
             </SheetDescription>
-            <input type="text" />
             <Input
               type="text"
               name="name"
@@ -229,7 +199,7 @@ export function TableDemo() {
             />
             <Input
               type="text"
-              name=" city"
+              name="city"
               value={updateUser.city}
               onChange={handleChange}
             />
