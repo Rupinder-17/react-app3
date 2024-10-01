@@ -6,6 +6,7 @@ import './index.css'
 // import Display from './Components/DisplayCOmponents.jsx'
 // import { AgeCount } from './Components/AgeCount.jsx'
 import { TableDashboard } from './Components/TableDashboard'
+import { MultiDeleteitem } from './Components/MultiDeleteitem'
 // import { AutocompleteExample } from './Components/Demo'
 
 
@@ -15,8 +16,9 @@ createRoot(document.getElementById('root')).render(
     {/* <Display/> */}
     {/* <SecondComponent/> */}
     {/* <AgeCount/> */}
-    <TableDashboard/>/
+    {/* <TableDashboard/>/ */}
     {/* <AutocompleteExample/> */}
+    <MultiDeleteitem/>
   </StrictMode>,
   
 )

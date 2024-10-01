@@ -86,7 +86,6 @@ export function TableDemo({ selectCheckedUsers, dataTable, setUserTable }) {
     
     selectCheckedUsers((element) => [...element, id]);
 
-    // element.includes(id) ? element.filter((itemId) => itemId !== id) : [...element] );
   };
 
   return (
