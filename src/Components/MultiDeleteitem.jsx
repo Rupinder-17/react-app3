@@ -47,14 +47,21 @@ export const MultiDeleteitem = () => {
     },
   ];
   const [table, setTable] = useState(TableData);
-  // const [isuserDelete, setDeteleUser] = useState("");
-  // console.log(isuserDelete);
 
   const handleDelete = (isuserDelete) => {
     const DeleteItem = table.filter((item) => item.id !== isuserDelete.id);
     setTable(DeleteItem);
   };
-  //
+  
+   const handleUpdateData = (updataUser) => {
+     if (updataUser) {
+       const userUpdatedData = table.map((item) =>
+         item.id === updataUser.id ? updataUser : item
+       );
+       setTable(userUpdatedData);
+     }
+   };
+
 
   return (
     <div>
@@ -62,9 +69,7 @@ export const MultiDeleteitem = () => {
         userTable={table}
         setTable={setTable}
         deletedData={handleDelete}
-        // setDeteleUser={setDeteleUser}
-        // editUser = {handleChange}
-        // isusersEdit={isusersEdit}
+        handleUpdateData= {handleUpdateData}
       />
     </div>
   );

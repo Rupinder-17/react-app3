@@ -28,7 +28,7 @@ import {
 import { Input } from "./ui/input";
 import { Button } from "./ui/button";
 
-export const TableDisplay = ({ userTable, deletedData  , setTable}) => {
+export const TableDisplay = ({ userTable, deletedData  , handleUpdateData}) => {
   const [isSheetShown, setSheetShown] = useState(false);
   const [isusersEdit, setEditUser] = useState({});
   const [updataUser, setUpdateUser] = useState({
@@ -43,16 +43,16 @@ export const TableDisplay = ({ userTable, deletedData  , setTable}) => {
     setUpdateUser((prev)=> ({...prev , [name]: value}))
 
   }
-  const handleUpdateData = () => {
-    if (updataUser) {
-      const userUpdatedData = userTable.map((item) =>
-        item.id === updataUser.id ? updataUser : item
-      );
-      setTable(userUpdatedData)
-      setSheetShown(false)
-      // setUpdateUser(user)
-    }
-  };
+  // const handleUpdateData = () => {
+  //   if (updataUser) {
+  //     const userUpdatedData = userTable.map((item) =>
+  //       item.id === updataUser.id ? updataUser : item
+  //     );
+  //     setTable(userUpdatedData)
+  //     setSheetShown(false)
+  //     // setUpdateUser(user)
+  //   }
+  // };
 
   const handleEdit = (user) => {
     console.log(user);
@@ -135,7 +135,9 @@ export const TableDisplay = ({ userTable, deletedData  , setTable}) => {
               onChange={handleInputChange}
             />
           </SheetHeader>
-          <Button onClick={handleUpdateData}>Submit</Button>
+          <Button onClick={()=>{
+            setSheetShown(false)
+            handleUpdateData(updataUser)}}>Submit</Button>
         </SheetContent>
       </Sheet>
     </>
