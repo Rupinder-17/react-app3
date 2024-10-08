@@ -7,6 +7,8 @@ import './index.css'
 // import { AgeCount } from './Components/AgeCount.jsx'
 import { TableDashboard } from './Components/TableDashboard'
 import { MultiDeleteitem } from './Components/MultiDeleteitem'
+import ColorBox from './Components/ColorSelect'
+import { ColorsSelect } from './Components/ColorsSelect'
 // import { AutocompleteExample } from './Components/Demo'
 
 
@@ -18,7 +20,9 @@ createRoot(document.getElementById('root')).render(
     {/* <AgeCount/> */}
     {/* <TableDashboard/>/ */}
     {/* <AutocompleteExample/> */}
-    <MultiDeleteitem/>
+    {/* <MultiDeleteitem/> */}
+    {/* <ColorBox/> */}
+    <ColorsSelect/>
   </StrictMode>,
   
 )
