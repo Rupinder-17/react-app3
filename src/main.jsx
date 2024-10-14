@@ -10,6 +10,7 @@ import { MultiDeleteitem } from './Components/MultiDeleteitem'
 import { ColorsSelect } from './Components/ColorsSelect'
 import { UseEffectPractice } from './Components/UseEffectPractice'
 import { ColorSelect } from './Components/ColorSelect'
+import { UseEffect } from './Components/UseEffect'
 // import { AutocompleteExample } from './Components/Demo'
 
 
@@ -27,7 +28,8 @@ createRoot(document.getElementById('root')).render(
     {/* <ColorSelects/> */}
     {/* <ColorsSelect/> */}
     {/* <UseEffectPractice/> */}
-    <ColorSelect/>
+    {/* <ColorSelect/> */}
+    <UseEffect/>
   </StrictMode>,
   
 )
