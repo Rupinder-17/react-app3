@@ -23,7 +23,7 @@ export const UseEffectPractice = () => {
     getData();
     // console.log("useEffect with dependency");
     document.title = "react: " + count;
-  }, [count]);
+  }, [ count]);
   // eh button de click te render kro ga kyo k count dependency diti hoi a
 
   async function getData() {

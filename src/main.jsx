@@ -11,6 +11,11 @@ import { ColorsSelect } from './Components/ColorsSelect'
 import { UseEffectPractice } from './Components/UseEffectPractice'
 import { ColorSelect } from './Components/ColorSelect'
 import { UseEffect } from './Components/UseEffect'
+import { CustomHook } from './Components/CustomHook'
+import { CustomDataHook } from './Components/CustomDataHook'
+import { ApiData } from './Components/ApiData'
+import { PostapiData } from './Components/PostapiData'
+import { CommonApi } from './Components/CommonApi'
 // import { AutocompleteExample } from './Components/Demo'
 
 
@@ -29,7 +34,12 @@ createRoot(document.getElementById('root')).render(
     {/* <ColorsSelect/> */}
     {/* <UseEffectPractice/> */}
     {/* <ColorSelect/> */}
-    <UseEffect/>
+    {/* <UseEffect/> */}
+    {/* <CustomHook/> */}
+    {/* <CustomDataHook/> */}
+    {/* <ApiData/> */}
+    {/* <PostapiData/> */}
+    <CommonApi/>
   </StrictMode>,
   
 )
