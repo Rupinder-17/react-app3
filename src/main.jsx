@@ -14,8 +14,10 @@ import { UseEffect } from './Components/UseEffect'
 import { CustomHook } from './Components/CustomHook'
 import { CustomDataHook } from './Components/CustomDataHook'
 import { ApiData } from './Components/ApiData'
-import { PostapiData } from './Components/PostapiData'
+// import { PostapiData } from './Components/PostapiData'
 import { CommonApi } from './Components/CommonApi'
+import { RiderApp } from './Components/RiderApp'
+import { PostapiData } from './Components/PostapiData'
 // import { AutocompleteExample } from './Components/Demo'
 
 
@@ -38,8 +40,10 @@ createRoot(document.getElementById('root')).render(
     {/* <CustomHook/> */}
     {/* <CustomDataHook/> */}
     {/* <ApiData/> */}
-    {/* <PostapiData/> */}
-    <CommonApi/>
+    <PostapiData/>
+    {/* <CommonApi/> */}
+    {/* <RiderApp/> */}
+    
   </StrictMode>,
   
 )

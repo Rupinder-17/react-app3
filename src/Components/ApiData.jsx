@@ -1,7 +1,7 @@
-import { useApi } from "@/hooks/useApi";
+import { useApiPost } from "@/hooks/useApiPost";
 
 export const ApiData = () => {
-  const [isloading, apiData] = useApi("/comments");
+  const [isloading, apiData] = useApiPost("/comments");
   console.log("api", apiData);
   // console.log(error);
 
