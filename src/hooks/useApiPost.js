@@ -45,7 +45,7 @@ export const useApiPost = (endpoint , title = 60000) => {
     setErrorHandle(null)
     try {
       let res = await fetch(
-        `https://jsonplaceholder.typicode.com/${endpoint}?page=1&limit=10`
+        `https://jsonplaceholder.typicode.com/${endpoint}`
       );
       res = await res.json();
       setpostData(res);

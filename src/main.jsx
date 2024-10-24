@@ -16,8 +16,9 @@ import { CustomDataHook } from './Components/CustomDataHook'
 import { ApiData } from './Components/ApiData'
 // import { PostapiData } from './Components/PostapiData'
 import { CommonApi } from './Components/CommonApi'
-import { RiderApp } from './Components/RiderApp'
+// import { RiderApp } from './Components/RiderApp'
 import { PostapiData } from './Components/PostapiData'
+import { FreeApiData } from './Components/FreeApiData'
 // import { AutocompleteExample } from './Components/Demo'
 
 
@@ -40,10 +41,10 @@ createRoot(document.getElementById('root')).render(
     {/* <CustomHook/> */}
     {/* <CustomDataHook/> */}
     {/* <ApiData/> */}
-    <PostapiData/>
+    {/* <PostapiData/> */}
     {/* <CommonApi/> */}
     {/* <RiderApp/> */}
-    
+    <FreeApiData/>
   </StrictMode>,
   
 )
