@@ -19,6 +19,8 @@ import { CommonApi } from './Components/CommonApi'
 // import { RiderApp } from './Components/RiderApp'
 import { PostapiData } from './Components/PostapiData'
 import { FreeApiData } from './Components/FreeApiData'
+import { Parent } from './Components/Parent'
+import ParentComponent from './Components/DemoParent'
 // import { AutocompleteExample } from './Components/Demo'
 
 
@@ -44,7 +46,9 @@ createRoot(document.getElementById('root')).render(
     {/* <PostapiData/> */}
     {/* <CommonApi/> */}
     {/* <RiderApp/> */}
-    <FreeApiData/>
+    {/* <FreeApiData/> */}
+    {/* <Parent/> */}
+    <ParentComponent/>
   </StrictMode>,
   
 )

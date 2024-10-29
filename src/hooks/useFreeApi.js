@@ -7,15 +7,15 @@ export const useFreeApi = (value) => {
   
   useEffect(() => {
     if (value) {
-      freeApi(value);
+      freeApi();
     }
   }, [value]);
 
-  async function freeApi(apiValue) {
+  async function freeApi() {
     setLoading(true);
-    console.log("value", apiValue);
+    console.log("value", value);
 
-    let url = `https://api.freeapi.app/api/v1/public/randomproducts?page=1&limit=${apiValue}&inc=category%252Cprice%252Cthumbnail%252Cimages%252Ctitle%252Cid&query=mens-watches`;
+    let url = `https://api.freeapi.app/api/v1/public/randomproducts?page=1&limit=${value}&inc=category%252Cprice%252Cthumbnail%252Cimages%252Ctitle%252Cid&query=mens-watches`;
 
     try {
       let response = await fetch(url);

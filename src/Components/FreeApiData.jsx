@@ -10,7 +10,7 @@ import {
 } from "./ui/table";
 
 export const FreeApiData = () => {
-  const [select, setSelect] = useState("40")
+  const [select, setSelect] = useState("4")
   const [dataFetch, errorHandle, isLoading] = useFreeApi(select);
   console.log("ddbm", dataFetch);
   console.log(select);

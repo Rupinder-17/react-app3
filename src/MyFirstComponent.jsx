@@ -3,6 +3,7 @@ import Button from "./Components/Button";
 import Alert from "./Components/Alert";
 import Input from "./Components/Input";
 import { CardWithForm } from "./Components/Card";
+import { memo } from "react";
 
 const MyFirstComponent = () => {
 
@@ -71,6 +72,6 @@ const MyFirstComponent = () => {
   );
 };
 
-export default MyFirstComponent;
+export default memo(MyFirstComponent) 
 
 
