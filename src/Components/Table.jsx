@@ -77,6 +77,7 @@ export function TableDemo({ selectCheckedUsers, dataTable, setUserTable }) {
       const updateitem = dataTable.map((item) =>
         item.id === updateUser.id ? updateUser : item
       );
+      console.log("uuu", updateitem);
       setUserTable(updateitem);
       setSheetOpen(false);
     }
@@ -94,7 +95,6 @@ export function TableDemo({ selectCheckedUsers, dataTable, setUserTable }) {
         <TableHeader>
           <TableRow>
             <TableHead className="">ID</TableHead>
-            <TableHead className=""></TableHead>
             <TableHead>Name</TableHead>
             <TableHead>Email</TableHead>
             <TableHead>City</TableHead>
@@ -175,7 +175,6 @@ export function TableDemo({ selectCheckedUsers, dataTable, setUserTable }) {
           </DialogHeader>
         </DialogContent>
       </Dialog>
-
       <Sheet open={isSheetOpen} onOpenChange={setSheetOpen}>
         <SheetContent>
           <SheetHeader>

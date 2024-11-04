@@ -21,6 +21,8 @@ import { PostapiData } from './Components/PostapiData'
 import { FreeApiData } from './Components/FreeApiData'
 import { Parent } from './Components/Parent'
 import ParentComponent from './Components/DemoParent'
+import { Pagination } from './Components/Pagination'
+import Portfolio from './Components/Portfolio'
 // import { AutocompleteExample } from './Components/Demo'
 
 
@@ -48,7 +50,10 @@ createRoot(document.getElementById('root')).render(
     {/* <RiderApp/> */}
     {/* <FreeApiData/> */}
     {/* <Parent/> */}
-    <ParentComponent/>
-  </StrictMode>,
+    {/* <ParentComponent/> */}
+    <Pagination/>
+    {/* <Portfolio/> */}
+  </StrictMode>
+  
   
 )

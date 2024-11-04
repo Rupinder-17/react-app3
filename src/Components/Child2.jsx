@@ -1,20 +1,19 @@
 import React, { useEffect } from 'react'
-import { useState } from 'react';
 import { memo } from 'react'
 
  const Input = ({onpress,   value}) => {
 
-    const [inputValue, setInputValue] = useState("")
-    console.log("input", inputValue);
+    // const [inputValue, setInputValue] = useState("")
+    // console.log("input", inputValue);
     
-    const handleInput = (e)=>{
-        setInputValue(e.target.value)
-        // onpress(e)
-    }
+    // const handleInput = (e)=>{
+    //     setInputValue(e.target.value)
+    //     // onpress(e)
+    // }
     useEffect(()=>{
        console.log("input", value);
        
-   },[])
+   },[value])
    
     
   return (

@@ -78,8 +78,8 @@ export const TableDashboard = () => {
   const [userTable, setUserTable] = useState(TableData);
   console.log(userTable);
 
-  console.log(checkedUsers);
-  
+  console.log("checked", checkedUsers);
+
   const handlecheckeditem = () => {
     setUserTable((prev) =>
       prev.filter((user) => !checkedUsers.includes(user.id))
@@ -94,8 +94,8 @@ export const TableDashboard = () => {
           <Admin />
         </div>
         <div className="w-[85%]">
-          <div className="flex gap-5 justify-between  px-5   sticky top-0 z-50 ">
-            <Input placeholder="Search..." className="w-96" />
+          <div className="flex gap-5 justify-between  px-5   sticky top-0 z-50">
+            <Input placeholder="Search..." className="w-96"/>
             <div className="flex gap-3">
               <span>John Doe</span>
               <div className="">
