@@ -23,6 +23,10 @@ import { Parent } from './Components/Parent'
 import ParentComponent from './Components/DemoParent'
 import { Pagination } from './Components/Pagination'
 import Portfolio from './Components/Portfolio'
+// import { CallBackHook } from './Components/CallBackHook'
+// import Test from './Components/Test'
+import { TodoApi } from './component2/TodoApi'
+import ParentData  from './component2/Parent'
 // import { AutocompleteExample } from './Components/Demo'
 
 
@@ -51,8 +55,12 @@ createRoot(document.getElementById('root')).render(
     {/* <FreeApiData/> */}
     {/* <Parent/> */}
     {/* <ParentComponent/> */}
-    <Pagination/>
+    {/* <Pagination/> */}
     {/* <Portfolio/> */}
+    {/* <CallBackHook/> */}
+    {/* <Test/> */}
+    {/* <TodoApi/> */}
+    <ParentData/>
   </StrictMode>
   
   

@@ -1,15 +1,21 @@
 import React, { useEffect, useState } from "react";
+import { useCallback } from "react";
 
 export const useFreeApi = (value) => {
   const [dataFetch, setDataFetch] = useState([]);
   const [isloading, setLoading] = useState(false);
   const [errorHandle, setErrorHandle] = useState(null);
-  
+
+ const freeApimemo = useCallback(()=>{
+ freeApi()
+  },[])
+
   useEffect(() => {
     if (value) {
-      freeApi();
+      // freeApi();
+      freeApimemo();
     }
-  }, [value]);
+  }, [value, freeApimemo]);
 
   async function freeApi() {
     setLoading(true);
