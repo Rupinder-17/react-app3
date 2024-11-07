@@ -27,6 +27,7 @@ import Portfolio from './Components/Portfolio'
 // import Test from './Components/Test'
 import { TodoApi } from './component2/TodoApi'
 import ParentData  from './component2/Parent'
+import { Counter } from './component2/Counter'
 // import { AutocompleteExample } from './Components/Demo'
 
 
@@ -59,8 +60,9 @@ createRoot(document.getElementById('root')).render(
     {/* <Portfolio/> */}
     {/* <CallBackHook/> */}
     {/* <Test/> */}
-    <TodoApi/>
+    {/* <TodoApi/> */}
     {/* <ParentData/> */}
+    <Counter/>
   </StrictMode>
   
   
