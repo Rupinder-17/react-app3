@@ -16,7 +16,7 @@ export const useTodoApi = () => {
     try{
         const response = await fetch("https://api.freeapi.app/api/v1/todos");
         let res = await response.json() 
-        setTodos(res?.data?.data|| [])
+        setTodos(res?.data|| [])
         console.log("data", res);
     }catch(e){
       setError(e)
