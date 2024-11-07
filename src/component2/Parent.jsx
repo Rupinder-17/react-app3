@@ -23,7 +23,7 @@ const ParentData = () => {
       <div className="flex gap-20 items-center justify-center">
         <div className="mt-5">
           <Count value={age} type="Age:" />
-          <Button onHandle={handleAge}>age</Button>
+          <Button onHandle={handleAge}> Increment age</Button>
         </div>
         <div className="mt-5 ">
           <Count value={salary} type="Salary:" />

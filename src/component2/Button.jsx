@@ -1,7 +1,7 @@
 import React from 'react'
 
  const Button = ({onHandle, children}) => {
-    console.log("button: button render");
+    console.log("button: button render" , children);
     
   return (
     <div>
