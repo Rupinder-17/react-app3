@@ -3,13 +3,17 @@ import React from "react";
 import { useMemo } from "react";
 import { useState } from "react";
 
-export const Counter = () => {
+export const UseMemoHook = () => {
   const [Counter1, setCounter1] = useState(1);
   const [Counter2, setCounter2] = useState(2);
+  console.log("one",Counter1);
+  console.log("two",Counter2);
+  
+  
 
   const checkevenNumber =useMemo( () => {
     let i =0
-    while(i<4000000000){
+    while(i<400000000){
         i++
     }
     if(Counter1%2===0){

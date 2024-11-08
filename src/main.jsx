@@ -27,7 +27,8 @@ import Portfolio from './Components/Portfolio'
 // import Test from './Components/Test'
 import { TodoApi } from './component2/TodoApi'
 import ParentData  from './component2/Parent'
-import { Counter } from './component2/Counter'
+import {  UseMemoHook } from './component2/Counter'
+import { UseRef } from './component2/UseRef'
 // import { AutocompleteExample } from './Components/Demo'
 
 
@@ -62,7 +63,8 @@ createRoot(document.getElementById('root')).render(
     {/* <Test/> */}
     {/* <TodoApi/> */}
     {/* <ParentData/> */}
-    <Counter/>
+    {/* <UseMemoHook/> */}
+    <UseRef/>
   </StrictMode>
   
   
