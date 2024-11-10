@@ -5,10 +5,14 @@ export const TimerREf = () => {
   const [timer, setTimer] = React.useState(0);
   const timeRef = React.useRef();
 
-  useEffect(() => {
+  const starttime = () => {
     timeRef.current = setInterval(() => {
       setTimer((prev) => prev + 1);
     }, 1000);
+  };
+
+  useEffect(() => {
+    starttime();
     return () => {
       clearInterval(timeRef.current);
     };
@@ -26,6 +30,12 @@ export const TimerREf = () => {
         className="bg-red-700 text-white px-3 rounded font-semibold text-xl py-2"
       >
         Stop
+      </button>
+      <button
+        className="bg-red-700 text-white px-3 rounded font-semibold text-xl py-2"
+        onClick={starttime}
+      >
+        Start
       </button>
     </div>
   );
