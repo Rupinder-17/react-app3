@@ -29,6 +29,7 @@ import { TodoApi } from './component2/TodoApi'
 import ParentData  from './component2/Parent'
 import {  UseMemoHook } from './component2/Counter'
 import { UseRef } from './component2/UseRef'
+import { TimerREf } from './component2/TimerREf'
 // import { AutocompleteExample } from './Components/Demo'
 
 
@@ -64,7 +65,8 @@ createRoot(document.getElementById('root')).render(
     {/* <TodoApi/> */}
     {/* <ParentData/> */}
     {/* <UseMemoHook/> */}
-    <UseRef/>
+    {/* <UseRef/> */}
+    <TimerREf/>
   </StrictMode>
   
   
