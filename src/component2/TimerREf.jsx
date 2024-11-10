@@ -23,6 +23,13 @@ export const TimerREf = () => {
         use Ref Time{" "}
       </p>
       <h1 className="text-3xl font-mono ">Timer: {timer}</h1>
+
+      <button
+        className="bg-green-700 text-white px-3 rounded font-semibold text-xl py-2"
+        onClick={starttime}
+      >
+        Start
+      </button>
       <button
         onClick={() => {
           clearInterval(timeRef.current);
@@ -30,12 +37,6 @@ export const TimerREf = () => {
         className="bg-red-700 text-white px-3 rounded font-semibold text-xl py-2"
       >
         Stop
-      </button>
-      <button
-        className="bg-red-700 text-white px-3 rounded font-semibold text-xl py-2"
-        onClick={starttime}
-      >
-        Start
       </button>
     </div>
   );
