@@ -30,6 +30,7 @@ import ParentData  from './component2/Parent'
 import {  UseMemoHook } from './component2/Counter'
 import { UseRef } from './component2/UseRef'
 import { TimerREf } from './component2/TimerREf'
+import { UseReducerHook } from './component2/UseReducerHook'
 // import { AutocompleteExample } from './Components/Demo'
 
 
@@ -66,7 +67,8 @@ createRoot(document.getElementById('root')).render(
     {/* <ParentData/> */}
     {/* <UseMemoHook/> */}
     {/* <UseRef/> */}
-    <TimerREf/>
+    {/* <TimerREf/> */}
+    <UseReducerHook/>
   </StrictMode>
   
   
