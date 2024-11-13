@@ -31,6 +31,7 @@ import {  UseMemoHook } from './component2/Counter'
 import { UseRef } from './component2/UseRef'
 import { TimerREf } from './component2/TimerREf'
 import { UseReducerHook } from './component2/UseReducerHook'
+import { TodoList } from './component2/TodoList'
 // import { AutocompleteExample } from './Components/Demo'
 
 
@@ -68,7 +69,8 @@ createRoot(document.getElementById('root')).render(
     {/* <UseMemoHook/> */}
     {/* <UseRef/> */}
     {/* <TimerREf/> */}
-    <UseReducerHook/>
+    {/* <UseReducerHook/> */}
+    <TodoList/>
   </StrictMode>
   
   
