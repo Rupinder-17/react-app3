@@ -33,7 +33,7 @@ export const TodoList = () => {
 
   const handleAdd = () => {
     if (edit) {
-      dispatch({ type: "Edit", data: { id: edit, title: inputState } });
+      dispatch({ type: "Edit", data: { id: edit, title: inputState }});
       setEdit(false);
       // setUpdateId(null);
     } else {
