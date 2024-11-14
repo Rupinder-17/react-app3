@@ -2,7 +2,10 @@ import React, { useState, useReducer } from "react";
 
 const reducer = (state, action) => {
   if (action.type === "Add") {
-    return [...state, { id: crypto.randomUUID(), title: action.data }];
+    return [
+      ...state,
+      { id: crypto.randomUUID(), title: action.data, ischecked: false },
+    ];
   }
   if (action.type === "Delete") {
     return state.filter((item) => item.id !== action.data);
@@ -10,6 +13,11 @@ const reducer = (state, action) => {
   if (action.type === "Edit") {
     return state.map((item) =>
       item.id === action.data.id ? { ...item, title: action.data.title } : item
+    );
+  }
+  if (action.type == "toggle") {
+    return state?.map((item) =>
+      item.id === action.data ? { ...item, ischecked: !item.ischecked } : item
     );
   }
   return state;
@@ -21,13 +29,13 @@ export const TodoList = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
   const [inputState, setInputState] = useState("");
   const [edit, setEdit] = useState(false);
-  const [updateId, setUpdateId] = useState(null);
+  // const [updateId, setUpdateId] = useState(null);
 
   const handleAdd = () => {
     if (edit) {
-      dispatch({ type: "Edit", data: { id: updateId, title: inputState } });
+      dispatch({ type: "Edit", data: { id: edit, title: inputState } });
       setEdit(false);
-      setUpdateId(null);
+      // setUpdateId(null);
     } else {
       dispatch({ type: "Add", data: inputState });
     }
@@ -40,8 +48,11 @@ export const TodoList = () => {
 
   const handleEdit = (item) => {
     setInputState(item.title);
-    setEdit(true);
-    setUpdateId(item.id);
+    setEdit(item.id);
+    // setUpdateId(item.id);
+  };
+  const handlecheked = (id) => {
+    dispatch({ type: "toggle", data: id });
   };
 
   return (
@@ -70,7 +81,22 @@ export const TodoList = () => {
             key={index}
             className="flex justify-between items-center bg-white py-2 px-3 rounded-lg shadow-sm border border-gray-200"
           >
-            <p className="text-gray-800">{item.title}</p>
+            <div className="flex gap-3">
+              <input
+                type="checkbox"
+                name=""
+                id=""
+                value={item.ischecked}
+                onChange={() => handlecheked(item.id)}
+              />
+              <p
+                className={`text-gray-800 ${
+                  item.ischecked ? "line-through" : ""
+                }`}
+              >
+                {item.title}
+              </p>
+            </div>
             <div className="flex space-x-3">
               <button
                 onClick={() => handleDelete(item.id)}
