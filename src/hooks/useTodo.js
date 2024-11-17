@@ -8,11 +8,15 @@ const reducer = (state, action) => {
   if (action.type == "Add") {
     return [
       ...state,
-      { id: crypto.randomUUID(), title: action.Data, isCompleted: false },
+      { id: crypto.randomUUID(), title: action.Data, isCompleted: false, isDeleted: false },
     ];
   }
   if (action.type == "Delete") {
-    return state?.filter((item) => item.id !== action.Data);
+    // let  deleteTodoitem = state?.find((item) => item.id === action.Data);
+    // if(deleteTodoitem){
+      return state.map((item)=> item.id === action.data ? {...item, isDeleted: true}:item)
+      
+    // }
   }
   if (action.type == "edit") {
     return state?.map((item) =>
@@ -30,7 +34,7 @@ const reducer = (state, action) => {
 };
 
 export const useTodo = () => {
-  let intialState = JSON.parse(localStorage.getItem("todo")) || [];
+  let intialState =  JSON.parse(localStorage.getItem("todo")) || [];
   const [state, dispatch] = useReducer(reducer, intialState);
 
   console.log("stateC", state);

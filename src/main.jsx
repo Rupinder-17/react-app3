@@ -34,6 +34,7 @@ import { UseReducerHook } from './component2/UseReducerHook'
 import { TodoList } from './component2/TodoList'
 import { Todolist1 } from './component2/Demo'
 import { CustomTodoList } from './component2/CustomTodoList'
+import { Card } from './component2/Card'
 // import { AutocompleteExample } from './Components/Demo'
 
 
@@ -74,7 +75,8 @@ createRoot(document.getElementById('root')).render(
     {/* <UseReducerHook/> */}
     {/* <TodoList/> */}
     {/* <Todolist1/> */}
-    <CustomTodoList/>
+    <CustomTodoList/>/
+    {/* <Card/> */}
   </StrictMode>
   
   
