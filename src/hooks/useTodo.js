@@ -1,3 +1,4 @@
+import { data } from "autoprefixer";
 import React from "react";
 import { useEffect } from "react";
 import { useReducer } from "react";
@@ -33,9 +34,13 @@ const reducer = (state, action) => {
   return state;
 };
 
+// let intialState =  JSON.parse(localStorage.getItem("todo")) || [];
+let intialState = {
+  todos: [],
+  deletedTodos: []
+}
 export const useTodo = () => {
-  let intialState =  JSON.parse(localStorage.getItem("todo")) || [];
-  const [state, dispatch] = useReducer(reducer, intialState);
+  const [state, dispatch] = useReducer(reducer, intialState.todos);
 
   console.log("stateC", state);
   useEffect(() => {
@@ -57,3 +62,15 @@ export const useTodo = () => {
 
   return [state, handleAdd, deleteTodo, EditTodo, Toggle];
 };
+
+ export const DeleteTodo = ()=>{
+  const [state, dispatch] = useReducer(reducer, intialState.deletedTodos);
+
+  const deleteTodoitem = (id, title)=>{
+    dispatch({type: "addtodos", Data: {id, title}})
+  }
+  const restoreData = (id)=>{
+    dispatch({type: "restore", Data: id})
+  }
+return[state, deleteTodoitem, restoreData]
+}
