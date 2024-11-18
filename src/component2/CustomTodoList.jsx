@@ -26,11 +26,11 @@ export const CustomTodoList = () => {
   };
 
   const handleDelete = (id) => {
-    //  const itemToDelete = state.find((item) => item.id === id);
+     const itemToDelete = state.find((item) => item.id === id);
 
-    // if (itemToDelete) {
-    //   setDeletedItem((prev) => [...prev, itemToDelete.title]);
-    // }
+    if (itemToDelete) {
+      setDeletedItem((prev) => [...prev, itemToDelete.title]);
+    }
 
     deleteTodo(id);
   };
@@ -65,7 +65,7 @@ export const CustomTodoList = () => {
         </div>
 
         <ul className="w-full space-y-2">
-          {state?.filter((item)=> !item.isDeleted).map((item, index) => (
+          {state?.map((item, index) => (
             <li
               key={index}
               className="flex items-center justify-between bg-white p-3 rounded-lg shadow-sm border border-gray-200"
@@ -74,7 +74,7 @@ export const CustomTodoList = () => {
                 type="checkbox"
                 name=""
                 id=""
-                onChange={() => handlecheked(item.id)}
+                onChange={() => handlecheked(item)}
               />
               <p
                 className={`text-gray-800 ${
@@ -96,18 +96,18 @@ export const CustomTodoList = () => {
           ))}
         </ul>
       </div>
-      <div>
-        <div className="w-96 border h-96 shadow-lg">
+      
+        <div className="w-96 border shadow-lg">
           <h1 className="bg-blue-800 text-center text-3xl text-white py-1">
             Deleted Item
-            <ul>
-              {state?.filter((item)=> item.isDeleted).map((item, index)=>(
-                <li key={index}>{item.title}</li>
+              </h1>
+            <ul className="bg">
+              {deleteditem?.map((item, index)=>(
+                <li key={index}>{item}</li>
               ))}
             </ul>
-          </h1>
         </div>
-      </div>
+      
     </div>
   );
 };

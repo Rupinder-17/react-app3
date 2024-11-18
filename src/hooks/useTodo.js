@@ -8,13 +8,13 @@ const reducer = (state, action) => {
   if (action.type == "Add") {
     return [
       ...state,
-      { id: crypto.randomUUID(), title: action.Data, isCompleted: false, isDeleted: false },
+      { id: crypto.randomUUID(), title: action.Data, isCompleted: false },
     ];
   }
   if (action.type == "Delete") {
     // let  deleteTodoitem = state?.find((item) => item.id === action.Data);
     // if(deleteTodoitem){
-      return state.map((item)=> item.id === action.data ? {...item, isDeleted: true}:item)
+      return state.filter((item)=> item.id !== action.data)
       
     // }
   }
