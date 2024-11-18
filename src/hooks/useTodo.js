@@ -15,7 +15,7 @@ const reducer = (state, action) => {
   if (action.type == "Delete") {
     // let  deleteTodoitem = state?.find((item) => item.id === action.Data);
     // if(deleteTodoitem){
-      return state.filter((item)=> item.id !== action.data)
+      return state.filter((item)=> item.id !== action.Data)
       
     // }
   }
@@ -26,21 +26,32 @@ const reducer = (state, action) => {
   }
   if (action.type == "toggle") {
     return state?.map((item) =>
-      item.id === action.Data.id
+      item.id === action.Data
         ? { ...item, isCompleted: !item.isCompleted }
         : item
     );
   }
   return state;
 };
-
-// let intialState =  JSON.parse(localStorage.getItem("todo")) || [];
-let intialState = {
-  todos: [],
-  deletedTodos: []
+const deleteReducer = (state, action)=>{
+  console.log("37", state);
+  
+  if(action.type == "addtodos"){
+    return [...state,{id:action.Data.id, title:action.Data.title}]
+  }
+  if(action.type== "restore"){
+    return state.filter((item)=>item.id !== action.Data)
+  }
+return state
 }
+
+const initialTodosState = [];
+const initialDeletedState = [];
+
 export const useTodo = () => {
-  const [state, dispatch] = useReducer(reducer, intialState.todos);
+  const [state, dispatch] = useReducer(reducer, initialTodosState);
+  console.log("rrrr", state);
+  
 
   console.log("stateC", state);
   useEffect(() => {
@@ -63,14 +74,18 @@ export const useTodo = () => {
   return [state, handleAdd, deleteTodo, EditTodo, Toggle];
 };
 
+
+
  export const DeleteTodo = ()=>{
-  const [state, dispatch] = useReducer(reducer, intialState.deletedTodos);
+  const [state, dispatch] = useReducer(deleteReducer, initialDeletedState);
+  console.log("ddddd", state);
+  
 
   const deleteTodoitem = (id, title)=>{
     dispatch({type: "addtodos", Data: {id, title}})
   }
   const restoreData = (id)=>{
-    dispatch({type: "restore", Data: id})
+    dispatch({type: "restore", Data:id })
   }
 return[state, deleteTodoitem, restoreData]
 }

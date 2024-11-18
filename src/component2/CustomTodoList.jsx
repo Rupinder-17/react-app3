@@ -1,18 +1,17 @@
-import { useTodo } from "@/hooks/useTodo";
+import { DeleteTodo, useTodo } from "@/hooks/useTodo";
 import React, { useState } from "react";
 // import { Card } from "./Card";
 
 export const CustomTodoList = () => {
-  const [state, handleAdd, deleteTodo, EditTodo, Toggle] = useTodo([]);
+  const [state, handleAdd, deleteTodo, EditTodo, Toggle] = useTodo();
   const [input, setInput] = useState("");
   const [edit, setEdit] = useState(null);
-  const [deleteditem , setDeletedItem] = useState([])
+  // const [deleteditem , setDeletedItem] = useState([])
+  const [state1, deleteTodoitem, restoreData] = DeleteTodo()
+  console.log("111", state1);
+  
   // console.log("iiii", input);
-  console.log("del", deleteditem);
-  
-
-  
-
+  // console.log("del", deleteditem);
   const AddTodo = () => {
     if (edit) {
       EditTodo(edit, input )
@@ -20,19 +19,22 @@ export const CustomTodoList = () => {
       setInput("")
     } else {
       handleAdd(input);
+      // restoreData(title)
       setInput("");
       setEdit(false);
     }
   };
+  const RestoreData = (id, title)=>{
+    restoreData(id)
+    handleAdd(title)
+    deleteTodoitem(id,title)
+  }
 
-  const handleDelete = (id) => {
-     const itemToDelete = state.find((item) => item.id === id);
-
-    if (itemToDelete) {
-      setDeletedItem((prev) => [...prev, itemToDelete.title]);
-    }
-
+  const handleDelete = (id, title) => {
     deleteTodo(id);
+    deleteTodoitem(id, title)
+    
+
   };
   const handleEdit = ( id, title) => {
     // EditTodo(id)
@@ -101,10 +103,19 @@ export const CustomTodoList = () => {
           <h1 className="bg-blue-800 text-center text-3xl text-white py-1">
             Deleted Item
               </h1>
+              <button></button>
             <ul className="bg">
-              {deleteditem?.map((item, index)=>(
-                <li key={index}>{item}</li>
-              ))}
+              {state1?.map((item, index)=>{
+                console.log("item", item);
+                
+               return <li key={index}>
+                  <p>
+                    {item.title}
+
+                    </p>
+                    <button onClick={()=>RestoreData(item.id, item.title)}>Restore</button>
+                </li>
+})}
             </ul>
         </div>
       
