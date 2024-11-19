@@ -33,7 +33,8 @@ import { TimerREf } from './component2/TimerREf'
 import { UseReducerHook } from './component2/UseReducerHook'
 import { TodoList } from './component2/TodoList'
 import { Todolist1 } from './component2/Demo'
-import TodoApp, { CustomTodoList } from './component2/Card'
+import  { CustomTodoList } from './component2/Card'
+import { CustomTodoList1 } from './component2/CustomTodoList'
 // import { AutocompleteExample } from './Components/Demo'
 
 
@@ -75,7 +76,8 @@ createRoot(document.getElementById('root')).render(
     {/* <TodoList/> */}
     {/* <Todolist1/> */}
     {/* <TodoApp/> */}
-    <CustomTodoList/>
+    {/* <CustomTodoList/> */}
+    <CustomTodoList1/>
   </StrictMode>
   
   

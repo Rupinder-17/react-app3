@@ -1,4 +1,3 @@
-import { data } from "autoprefixer";
 import React from "react";
 import { useEffect } from "react";
 import { useReducer } from "react";
@@ -15,8 +14,8 @@ const reducer = (state, action) => {
   if (action.type == "Delete") {
     // let  deleteTodoitem = state?.find((item) => item.id === action.Data);
     // if(deleteTodoitem){
-      return state.filter((item)=> item.id !== action.Data)
-      
+    return state.filter((item) => item.id !== action.Data.id);
+
     // }
   }
   if (action.type == "edit") {
@@ -33,25 +32,30 @@ const reducer = (state, action) => {
   }
   return state;
 };
-const deleteReducer = (state, action)=>{
-  console.log("37", state);
+const deleteReducer = (state, action) => {
+  console.log("state, action", {state, action});
   
-  if(action.type == "addtodos"){
-    return [...state,{id:action.Data.id, title:action.Data.title}]
-  }
-  if(action.type== "restore"){
-    return state.filter((item)=>item.id !== action.Data)
-  }
-return state
-}
 
-const initialTodosState = [];
-const initialDeletedState = [];
+  if (action.type == "addtodos") {
+    return [...state, action.Data ];
+  }
+  if (action.type == "restore") {
+    
+    let dataI̥tem= state.filter((item) => item.id !== action.Data.id);
+    console.log("🚀 ~ deleteReducer ~ dataI̥tem:", dataI̥tem)
+    // console.log("dataItem", dataItem);
+    return dataI̥tem
+    
+  }
+  return state;
+};
+
+// const initialTodosState = [];
+// const initialDeletedState = [];
 
 export const useTodo = () => {
-  const [state, dispatch] = useReducer(reducer, initialTodosState);
+  const [state, dispatch] = useReducer(reducer, []);
   console.log("rrrr", state);
-  
 
   console.log("stateC", state);
   useEffect(() => {
@@ -74,18 +78,15 @@ export const useTodo = () => {
   return [state, handleAdd, deleteTodo, EditTodo, Toggle];
 };
 
-
-
- export const DeleteTodo = ()=>{
-  const [state, dispatch] = useReducer(deleteReducer, initialDeletedState);
+export const DeleteTodo = () => {
+  const [state, dispatch] = useReducer(deleteReducer, []);
   console.log("ddddd", state);
-  
 
-  const deleteTodoitem = (id, title)=>{
-    dispatch({type: "addtodos", Data: {id, title}})
-  }
-  const restoreData = (id)=>{
-    dispatch({type: "restore", Data:id })
-  }
-return[state, deleteTodoitem, restoreData]
-}
+  const AddDeleteTodoitem = ( title) => {
+    dispatch({ type: "addtodos", Data: title  });
+  };
+  const restoreData = (title) => {
+    dispatch({ type: "restore", Data: title });
+  };
+  return [state, AddDeleteTodoitem, restoreData];
+};

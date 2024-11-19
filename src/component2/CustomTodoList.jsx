@@ -2,21 +2,22 @@ import { DeleteTodo, useTodo } from "@/hooks/useTodo";
 import React, { useState } from "react";
 // import { Card } from "./Card";
 
-export const CustomTodoList = () => {
+export const CustomTodoList1 = () => {
   const [state, handleAdd, deleteTodo, EditTodo, Toggle] = useTodo();
   const [input, setInput] = useState("");
   const [edit, setEdit] = useState(null);
   // const [deleteditem , setDeletedItem] = useState([])
-  const [state1, deleteTodoitem, restoreData] = DeleteTodo()
+  const [state1, deleteTodoitem, restoreData] = DeleteTodo();
   console.log("111", state1);
-  
+  console.log("first state", state);
+
   // console.log("iiii", input);
   // console.log("del", deleteditem);
   const AddTodo = () => {
     if (edit) {
-      EditTodo(edit, input )
-      setEdit(null)
-      setInput("")
+      EditTodo(edit, input);
+      setEdit(null);
+      setInput("");
     } else {
       handleAdd(input);
       // restoreData(title)
@@ -24,26 +25,23 @@ export const CustomTodoList = () => {
       setEdit(false);
     }
   };
-  const RestoreData = (id, title)=>{
-    restoreData(id)
-    handleAdd(title)
-    deleteTodoitem(id,title)
-  }
 
-  const handleDelete = (id, title) => {
-    deleteTodo(id);
-    deleteTodoitem(id, title)
-    
-
+  const RestoreData = (item) => {
+    restoreData(item);
+    handleAdd(item.title);
   };
-  const handleEdit = ( id, title) => {
-    // EditTodo(id)
+
+  const handleDelete = (title) => {
+    deleteTodo(title);
+    deleteTodoitem(title);
+  };
+  const handleEdit = (id, title) => {
     setEdit(id);
     setInput(title);
   };
-  const handlecheked = (id)=>{
-    Toggle(id)
-  }
+  const handlecheked = (id) => {
+    Toggle(id);
+  };
 
   return (
     <div className="flex px-7">
@@ -76,7 +74,7 @@ export const CustomTodoList = () => {
                 type="checkbox"
                 name=""
                 id=""
-                onChange={() => handlecheked(item)}
+                onChange={() => handlecheked(item.id)}
               />
               <p
                 className={`text-gray-800 ${
@@ -86,7 +84,7 @@ export const CustomTodoList = () => {
                 {item.title}
               </p>
               <button
-                onClick={() => handleDelete(item.id)}
+                onClick={() => handleDelete(item)}
                 className="text-red-500 hover:text-red-700 font-medium focus:outline-none"
               >
                 Delete
@@ -98,27 +96,32 @@ export const CustomTodoList = () => {
           ))}
         </ul>
       </div>
-      
-        <div className="w-96 border shadow-lg">
-          <h1 className="bg-blue-800 text-center text-3xl text-white py-1">
-            Deleted Item
-              </h1>
-              <button></button>
-            <ul className="bg">
-              {state1?.map((item, index)=>{
-                console.log("item", item);
-                
-               return <li key={index}>
-                  <p>
-                    {item.title}
 
-                    </p>
-                    <button onClick={()=>RestoreData(item.id, item.title)}>Restore</button>
-                </li>
-})}
-            </ul>
-        </div>
-      
+      <div className="w-96 border shadow-lg">
+        <h1 className="bg-blue-800 text-center text-3xl text-white py-1">
+          Deleted Item
+        </h1>
+        <button></button>
+        <ul className="bg">
+          {state1?.map((item, index) => {
+            console.log("item", item);
+
+            return (
+              <li key={index}>
+                <div className="flex justify-between px-1 bg-slate-200 mt-5 shadow-md">
+                  <p className="bg-slate-200">{item.title}</p>
+                  <button
+                    onClick={() => RestoreData(item)}
+                    className="bg-blue-700 px-4 py-1 text-white rounded-sm"
+                  >
+                    Restore
+                  </button>
+                </div>
+              </li>
+            );
+          })}
+        </ul>
+      </div>
     </div>
   );
 };

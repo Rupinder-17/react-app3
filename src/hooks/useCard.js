@@ -57,11 +57,11 @@ const useTodos = () => {
 
   return { todos, addTodo, deleteTodo, editTodo, toggleTodo };
 };
-export default  useTodos
+export default useTodos;
 
- export const useDeletedItems = () => {
+
+export const useDeletedItems = () => {
   const [deletedItems, dispatch] = useReducer(deletedReducer, []);
-
   const addDeletedItem = (item) => {
     dispatch({ type: "AddDeleted", payload: item });
   };
