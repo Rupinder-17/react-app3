@@ -80,8 +80,8 @@ createRoot(document.getElementById('root')).render(
     {/* <TodoApp/> */}
     {/* <CustomTodoList/> */}
     {/* <CustomTodoList1/> */}
-    {/* <MainComponent/> */}
-    <TodoAdd/>
+    <MainComponent/>
+    {/* <TodoAdd/> */}
   </StrictMode>
   
   
