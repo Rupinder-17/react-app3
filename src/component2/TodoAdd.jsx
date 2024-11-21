@@ -31,7 +31,7 @@ export const TodoAdd = ({ onpress, onpressDelete, addTodo }) => {
           >
             <p className="text-gray-700">{item.title}</p>
             <button
-              onClick={() => onpressDelete(item.id)} // Pass the item's ID to delete
+              onClick={() => onpressDelete(item)} // Pass the item's ID to delete
               className="px-3 py-1 bg-red-500 text-white rounded-lg hover:bg-red-600 transition"
             >
               Delete

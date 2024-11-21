@@ -1,28 +1,28 @@
 import React from "react";
 import { useReducer } from "react";
 
-const AddReducer = (state, action) => {
+const addReducer = (state, action) => {
   if (action.type == "AddTodo") {
     return [
       ...state,
       { id: crypto.randomUUID(), title: action.data, isChecked: false },
     ];
   }
-  if(action.type == "deleteTodo"){
-    return state?.filter((item)=> item.id !== action.data) 
+  if (action.type == "deleteTodo") {
+    return state?.filter((item) => item.id !== action.data.id);
   }
   return state;
 };
 
 const initialState = [];
 export const useAddTodo = () => {
-  const [addTodo, dispatch] = useReducer(AddReducer, initialState);
+  const [addTodo, dispatch] = useReducer(addReducer, initialState);
 
-  const AddTodoList = (title) => {
+  const addTodoList = (title) => {
     dispatch({ type: "AddTodo", data: title });
   };
-  const DeleteTodo = (id) => {
-    dispatch({ type: "deleteTodo", data: id });
+  const deleteTodo = (item) => {
+    dispatch({ type: "deleteTodo", data: item });
   };
-  return [addTodo, AddTodoList, DeleteTodo];
+  return [addTodo, addTodoList, deleteTodo];
 };

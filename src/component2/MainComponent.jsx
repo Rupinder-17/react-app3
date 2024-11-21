@@ -1,29 +1,27 @@
-import React from 'react'
-import { TodoAdd } from './TodoAdd'
+import React from "react";
+import { TodoAdd } from "./TodoAdd";
 // import { DeleteTodo } from './DeleteTodo'
-import { useAddTodo } from '@/hooks/useAddTodo'
-import { useDeletedTodo } from '@/hooks/useDeleteTodo';
-import { DeletedTodoItems } from './DeleteTodo';
+import { useAddTodo } from "@/hooks/useAddTodo";
+import { useDeletedTodo } from "@/hooks/useDeleteTodo";
+import { DeletedTodoItems } from "./DeleteTodo";
 
 export const MainComponent = () => {
-  const [addTodo, AddTodoList, DeleteTodo] = useAddTodo();
-  const [addDeleteTodos, AdddeletedItems, RestoreTodos] = useDeletedTodo()
+  const [addTodo, addTodoList, deleteTodo] = useAddTodo();
+  const [addDeleteTodos, adddeletedItems, restoreTodos] = useDeletedTodo();
 
-   const handleAdd = (input) => {
-    console.log("hello");
-    
-     if (input.trim() !== "") {
-       AddTodoList(input);
-      //  setInput("");
-      AdddeletedItems(input)
-     }
-   };
-   const handleDelete = (id) => {
-     DeleteTodo(id);
-   };
-   const RestoreFunction = (id)=>{
-    RestoreTodos(id)
-   }
+  const handleAdd = (input) => {
+    if (input.trim() !== "") {
+      addTodoList(input);
+    }
+  };
+  const handleDelete = (item) => {
+    deleteTodo(item);
+    adddeletedItems(item);
+  };
+  const restoreFunction = (item, id) => {
+    restoreTodos(item, id);
+    handleAdd(item.title);
+  };
   return (
     <div>
       <TodoAdd
@@ -31,7 +29,10 @@ export const MainComponent = () => {
         addTodo={addTodo}
         onpressDelete={handleDelete}
       />
-      <DeletedTodoItems onRestoreClick={RestoreFunction} addDeleteTodos={addDeleteTodos}/>
+      <DeletedTodoItems
+        onRestoreClick={restoreFunction}
+        addDeleteTodos={addDeleteTodos}
+      />
     </div>
   );
-}
+};
