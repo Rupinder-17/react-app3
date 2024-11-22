@@ -11,6 +11,12 @@ const deleteReducer = (state, action) => {
   if(action.type == "permenentDelete"){
     return state.filter((item)=> item.id !== action.data.id)
   }
+  if(action.type == "checked"){
+    return[
+      ...state,
+      state?.map((item)=>item.id === action.data.id ? {...item , ischecked: action.data.ischecked}: item)
+    ]
+  }
   return state;
 };
 
@@ -31,5 +37,11 @@ export const useDeletedTodo = () => {
   const permanentDelete = (item)=>{
     dispatch({type: "permenentDelete", data: item})
   }
-  return [addDeleteTodos, adddeletedItems, restoreTodos, permanentDelete];
+  const checkedTodos = (item, ischecked)=>{
+    dispatch({type: "checked", data:{id:item.id, ischecked}})
+  }
+  const deleteChecked = (item)=>{
+    dispatch({type: "deleteAllChecked", data: item})
+  }
+  return [addDeleteTodos, adddeletedItems, restoreTodos, permanentDelete, checkedTodos, deleteChecked];
 };

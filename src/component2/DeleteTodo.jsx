@@ -1,13 +1,17 @@
-// import React from "react";
+import React from "react";
 import Swal from "sweetalert2";
+import toast, { Toaster } from "react-hot-toast";
+import { useState } from "react";
 
-export const DeletedTodoItems = ({
+const DeletedTodoItems = ({
   onRestoreClick,
   addDeleteTodos = [],
   onDeletePermanent,
 }) => {
+  const [checked, setchecked] = useState();
   return (
     <div className="max-w-md mx-auto mt-10 p-6 bg-white shadow-md rounded-lg">
+      <Toaster position="top-right" reverseOrder={false} />
       <h1 className="text-2xl font-bold text-center mb-4">Deleted Todos</h1>
       <div>
         <ul className="space-y-2">
@@ -17,9 +21,19 @@ export const DeletedTodoItems = ({
                 key={item.id}
                 className="flex justify-between items-center p-2 border border-gray-200 rounded-lg bg-gray-50"
               >
+                <input
+                  type="checkbox"
+                  name=""
+                  id=""
+                  onChange={(e) => {
+                    setchecked(e.target.value);
+                  }}
+                  value={checked}
+                />
                 <p className="text-gray-700">{item.title}</p>
                 <button
                   onClick={() => {
+                    toast.success("todo is restore sucessfully");
                     onRestoreClick(item);
                   }}
                   className="px-3 py-1 bg-green-500 text-white rounded-lg hover:bg-green-600 transition"
@@ -38,6 +52,8 @@ export const DeletedTodoItems = ({
                       confirmButtonText: "Yes, delete it!",
                     }).then((result) => {
                       if (result.isConfirmed) {
+                        onDeletePermanent(item);
+                        toast.success("your todo is deleted permanently");
                         Swal.fire({
                           title: "Deleted!",
                           text: "Your file has been deleted.",
@@ -46,7 +62,6 @@ export const DeletedTodoItems = ({
                       }
                     });
                     // alert("are you sure to delete")
-                    onDeletePermanent(item);
                   }}
                   className="bg-red-800 text-white px-3 py-1 rounded-md "
                 >
@@ -60,3 +75,4 @@ export const DeletedTodoItems = ({
     </div>
   );
 };
+export default React.memo(DeletedTodoItems);

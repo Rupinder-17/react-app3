@@ -36,7 +36,6 @@ import { Todolist1 } from './component2/Demo'
 import  { CustomTodoList } from './component2/Card'
 import { CustomTodoList1 } from './component2/CustomTodoList'
 import { MainComponent } from './component2/MainComponent'
-import { TodoAdd } from './component2/TodoAdd'
 // import { AutocompleteExample } from './Components/Demo'
 
 
