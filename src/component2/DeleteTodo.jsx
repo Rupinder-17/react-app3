@@ -1,4 +1,6 @@
 // import React from "react";
+import Swal from "sweetalert2";
+
 
 export const DeletedTodoItems = ({
   onRestoreClick,
@@ -25,7 +27,26 @@ export const DeletedTodoItems = ({
                 >
                   Restore
                 </button>
-                <button onClick={() => onDeletePermanent(item)}>
+                <button onClick={() =>{
+                  Swal.fire({
+                    title: "Are you sure?",
+                    text: "You won't be able to revert this!",
+                    icon: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#3085d6",
+                    cancelButtonColor: "#d33",
+                    confirmButtonText: "Yes, delete it!",
+                  }).then((result) => {
+                    if (result.isConfirmed) {
+                      Swal.fire({
+                        title: "Deleted!",
+                        text: "Your file has been deleted.",
+                        icon: "success",
+                      });
+                    }
+                  });
+                  // alert("are you sure to delete")
+                   onDeletePermanent(item)}}>
                   Permenent Delete
                 </button>
               </li>
