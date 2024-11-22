@@ -15,9 +15,9 @@ const deleteReducer = (state, action) => {
 };
 
 export const useDeletedTodo = () => {
-  let deletedLocalStorage = localStorage.getItem("DeletedTodos");
-  const initialState =
-    deletedLocalStorage !== null ? JSON.parse(deletedLocalStorage) : [];
+  // let deletedLocalStorage = localStorage.getItem("DeletedTodos");
+  const initialState = JSON.parse(localStorage.getItem("DeletedTodos")) || [];
+    // deletedLocalStorage !== null ? JSON.parse(deletedLocalStorage) : [];
 
   const [addDeleteTodos, dispatch] = useReducer(deleteReducer, initialState);
   localStorage.setItem("DeletedTodos", JSON.stringify(addDeleteTodos));
