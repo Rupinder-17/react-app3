@@ -2,20 +2,25 @@ import React from "react";
 import { useReducer } from "react";
 
 const deleteReducer = (state, action) => {
-
   if (action.type == "addDeletedItem") {
     return [...state, action.data];
   }
   if (action.type == "restore") {
-
     return state?.filter((item) => item.id !== action.data.id);
+  }
+  if(action.type == "permenentDelete"){
+    return state.filter((item)=> item.id !== action.data.id)
   }
   return state;
 };
 
-const initialState = [];
 export const useDeletedTodo = () => {
+  let deletedLocalStorage = localStorage.getItem("DeletedTodos");
+  const initialState =
+    deletedLocalStorage !== null ? JSON.parse(deletedLocalStorage) : [];
+
   const [addDeleteTodos, dispatch] = useReducer(deleteReducer, initialState);
+  localStorage.setItem("DeletedTodos", JSON.stringify(addDeleteTodos));
 
   const adddeletedItems = (item) => {
     dispatch({ type: "addDeletedItem", data: item });
@@ -23,5 +28,8 @@ export const useDeletedTodo = () => {
   const restoreTodos = (item) => {
     dispatch({ type: "restore", data: item });
   };
-  return [addDeleteTodos, adddeletedItems, restoreTodos];
+  const permanentDelete = (item)=>{
+    dispatch({type: "permenentDelete", data: item})
+  }
+  return [addDeleteTodos, adddeletedItems, restoreTodos, permanentDelete];
 };

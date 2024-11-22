@@ -14,10 +14,16 @@ const addReducer = (state, action) => {
   return state;
 };
 
-const initialState = [];
 export const useAddTodo = () => {
+  let localStorageTodo = localStorage.getItem("todos");
+  console.log("todos", localStorageTodo);
+  
+  const initialState =
+    localStorageTodo !== null ? JSON.parse(localStorageTodo) : [];
+    console.log("state", initialState);
+    
   const [addTodo, dispatch] = useReducer(addReducer, initialState);
-
+  localStorage.setItem("todos", JSON.stringify(addTodo));
   const addTodoList = (title) => {
     dispatch({ type: "AddTodo", data: title });
   };
