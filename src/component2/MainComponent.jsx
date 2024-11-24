@@ -4,10 +4,17 @@ import TodoAdd  from "./TodoAdd";
 import { useAddTodo } from "@/hooks/useAddTodo";
 import { useDeletedTodo } from "@/hooks/useDeleteTodo";
 import  DeletedTodoItems  from "./DeleteTodo";
+// import { useState } from "react";
 
 export const MainComponent = () => {
   const [addTodo, addTodoList, deleteTodo] = useAddTodo();
-  const [addDeleteTodos, adddeletedItems, restoreTodos , permenentDelete] = useDeletedTodo();
+  const [
+    addDeleteTodos,
+    adddeletedItems,
+    restoreTodos,
+    permenentDelete,
+  abc
+  ] = useDeletedTodo();
 
   const handleAdd = (input) => {
     console.log("hello add");
@@ -31,6 +38,12 @@ export const MainComponent = () => {
     
     permenentDelete(item)
   }
+  const handleDeleteAllChecked = (checked)=>{
+    console.log("delete handler in main component");
+    abc(checked)
+    
+    // deleteChecked(checked)
+  }
   return (
     <div>
       <TodoAdd
@@ -42,6 +55,9 @@ export const MainComponent = () => {
         onRestoreClick={restoreFunction}
         addDeleteTodos={addDeleteTodos}
         onDeletePermanent = {handlePermentDelete}
+        onpressDeleteChecked = {handleDeleteAllChecked}
+        // setchecked= {handleChecked}
+        // value={checked}
       />
     </div>
   );

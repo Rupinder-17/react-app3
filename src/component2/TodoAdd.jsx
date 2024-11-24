@@ -29,7 +29,7 @@ import toast, { Toaster } from "react-hot-toast";
       <ul className="space-y-2">
         {addTodo?.map((item) => (
           <li
-            key={item.id} // Use a unique key
+            key={item.id} 
             className="flex justify-between items-center p-2 border border-gray-200 rounded-lg bg-gray-50"
           >
             <p className="text-gray-700">{item.title}</p>

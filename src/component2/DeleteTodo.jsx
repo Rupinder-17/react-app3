@@ -7,15 +7,21 @@ const DeletedTodoItems = ({
   onRestoreClick,
   addDeleteTodos = [],
   onDeletePermanent,
+  onpressDeleteChecked,
+  
+
 }) => {
-  const [checked, setchecked] = useState();
+  const [checked, setchecked] = useState([]);
+  console.log("checked", checked);
+  
   return (
     <div className="max-w-md mx-auto mt-10 p-6 bg-white shadow-md rounded-lg">
       <Toaster position="top-right" reverseOrder={false} />
       <h1 className="text-2xl font-bold text-center mb-4">Deleted Todos</h1>
+      <button onClick={() => onpressDeleteChecked(checked)}>DeleteAll</button>
       <div>
         <ul className="space-y-2">
-          {addDeleteTodos?.map((item) => {
+          {addDeleteTodos.map((item) => {
             return (
               <li
                 key={item.id}
@@ -25,10 +31,10 @@ const DeletedTodoItems = ({
                   type="checkbox"
                   name=""
                   id=""
-                  onChange={(e) => {
-                    setchecked(e.target.value);
+                  onChange={()=>{
+                    setchecked((prev)=> [...prev, item.id])
                   }}
-                  value={checked}
+                
                 />
                 <p className="text-gray-700">{item.title}</p>
                 <button
@@ -67,6 +73,7 @@ const DeletedTodoItems = ({
                 >
                   Permenent Delete
                 </button>
+                ;
               </li>
             );
           })}

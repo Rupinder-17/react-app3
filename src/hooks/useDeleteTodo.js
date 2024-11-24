@@ -17,6 +17,11 @@ const deleteReducer = (state, action) => {
       state?.map((item)=>item.id === action.data.id ? {...item , ischecked: action.data.ischecked}: item)
     ]
   }
+  if(action.type == "deleteAllChecked"){
+    console.log("action.data",action.data);
+    
+    return state.filter((item)=> item.id !== item.ischecked)
+  }
   return state;
 };
 
@@ -38,10 +43,12 @@ export const useDeletedTodo = () => {
     dispatch({type: "permenentDelete", data: item})
   }
   const checkedTodos = (item, ischecked)=>{
-    dispatch({type: "checked", data:{id:item.id, ischecked}})
+    dispatch({type: "checked", data:{id:item, ischecked}})
   }
-  const deleteChecked = (item)=>{
-    dispatch({type: "deleteAllChecked", data: item})
+  const abc = (item)=>{
+    console.log("even before dispatch", item);
+    
+    // dispatch({type: "deleteAllChecked", data: item})
   }
-  return [addDeleteTodos, adddeletedItems, restoreTodos, permanentDelete, checkedTodos, deleteChecked];
+  return [addDeleteTodos, adddeletedItems, restoreTodos, permanentDelete, checkedTodos, abc];
 };
