@@ -36,12 +36,10 @@ export const MainComponent = () => {
   };
   const handlePermentDelete = (item)=>{
     console.log("hello permenent delete");
-    
     permenentDelete(item)
   }
   const handleDeleteAllChecked = (checked)=>{
     console.log("delete handler in main component");
-    // abc(checked)
     deleteAllChecked(checked)
     
   }

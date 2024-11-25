@@ -54,7 +54,7 @@ const DeletedTodoItems = ({
       </button>
       <div>
         <ul className="space-y-2">
-          {addDeleteTodos.map((item,index) => (
+          {addDeleteTodos?.map((item,index) => (
             <li
               key={index}
               className="flex justify-between items-center p-2 border border-gray-200 rounded-lg bg-gray-50"

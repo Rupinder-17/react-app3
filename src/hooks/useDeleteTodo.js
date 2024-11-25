@@ -12,15 +12,13 @@ const deleteReducer = (state, action) => {
     return state.filter((item)=> item.id !== action.data.id)
   }
   if(action.type == "checked"){
-    return[
-      ...state,
-      state?.map((item)=>item.id === action.data.id ? {...item , ischecked: action.data.ischecked}: item)
-    ]
+    return state?.map((item)=>item.id === action.data.id ? {...item , ischecked: action.data.ischecked}: item)
+    
   }
   if(action.type == "deleteAllChecked"){
     console.log("action.data",action.data);
     
-    return state.filter((item)=>  item.id !== item.ischecked)
+    return state.filter((item)=> !action.data.includes(item.id))
   }
   return state;
 };
@@ -43,12 +41,14 @@ export const useDeletedTodo = () => {
     dispatch({type: "permenentDelete", data: item})
   }
   const checkedTodos = (item, ischecked)=>{
+    console.log("checked data");
+    
     dispatch({type: "checked", data:{id:item, ischecked}})
   }
   const deleteAllChecked = (item)=>{
     console.log("even before dispatch", item);
     
-    dispatch({type: "deleteAllChecked"})
+    dispatch({type: "deleteAllChecked", data: item})
   }
   return [addDeleteTodos, adddeletedItems, restoreTodos, permanentDelete, checkedTodos, deleteAllChecked];
 };
