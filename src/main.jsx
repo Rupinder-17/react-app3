@@ -36,6 +36,7 @@ import { Todolist1 } from './component2/Demo'
 import  { CustomTodoList } from './component2/Card'
 import { CustomTodoList1 } from './component2/CustomTodoList'
 import { MainComponent } from './component2/MainComponent'
+import { ApiCallcustom } from './component2/ApiCallcustom'
 // import { AutocompleteExample } from './Components/Demo'
 
 
@@ -79,8 +80,9 @@ createRoot(document.getElementById('root')).render(
     {/* <TodoApp/> */}
     {/* <CustomTodoList/> */}
     {/* <CustomTodoList1/> */}
-    <MainComponent/>
+    {/* <MainComponent/> */}
     {/* <TodoAdd/> */}
+    <ApiCallcustom/>
   </StrictMode>
   
   
