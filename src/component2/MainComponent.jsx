@@ -13,7 +13,8 @@ export const MainComponent = () => {
     adddeletedItems,
     restoreTodos,
     permenentDelete,
-  abc
+    checkedTodos,
+    deleteAllChecked,
   ] = useDeletedTodo();
 
   const handleAdd = (input) => {
@@ -40,9 +41,9 @@ export const MainComponent = () => {
   }
   const handleDeleteAllChecked = (checked)=>{
     console.log("delete handler in main component");
-    abc(checked)
+    // abc(checked)
+    deleteAllChecked(checked)
     
-    // deleteChecked(checked)
   }
   return (
     <div>

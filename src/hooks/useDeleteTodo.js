@@ -20,7 +20,7 @@ const deleteReducer = (state, action) => {
   if(action.type == "deleteAllChecked"){
     console.log("action.data",action.data);
     
-    return state.filter((item)=> item.id !== item.ischecked)
+    return state.filter((item)=>  item.id !== item.ischecked)
   }
   return state;
 };
@@ -45,10 +45,10 @@ export const useDeletedTodo = () => {
   const checkedTodos = (item, ischecked)=>{
     dispatch({type: "checked", data:{id:item, ischecked}})
   }
-  const abc = (item)=>{
+  const deleteAllChecked = (item)=>{
     console.log("even before dispatch", item);
     
-    // dispatch({type: "deleteAllChecked", data: item})
+    dispatch({type: "deleteAllChecked"})
   }
-  return [addDeleteTodos, adddeletedItems, restoreTodos, permanentDelete, checkedTodos, abc];
+  return [addDeleteTodos, adddeletedItems, restoreTodos, permanentDelete, checkedTodos, deleteAllChecked];
 };
