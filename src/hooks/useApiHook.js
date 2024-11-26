@@ -25,12 +25,12 @@ export const useApiHook = () => {
     try {
       const response = await fetch(apiData);
       const result = await response.json();
-      console.log(result);
+      console.log("API RESULT",result);
       dispatch({ type: "success", result });
     } catch (e) {
       console.log(e);
       dispatch({ type: "error", result: e.message });
     }
   }, []);
-  return { ...state, fetchData };
+  return {...state, fetchData};
 };
