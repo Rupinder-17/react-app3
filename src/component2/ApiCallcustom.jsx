@@ -1,29 +1,58 @@
 import { useApiHook } from "@/hooks/useApiHook";
-import React, { useEffect } from "react";
+// import React, { useEffect } from "react";
 
 export const ApiCallcustom = () => {
   const { data, loading, error, fetchData } = useApiHook();
   console.log("api data", data);
-  
 
-  useEffect(() => {
+  // useEffect(() => {
+  //   fetchData("https://api.freeapi.app/api/v1/public/cats/cat/random");
+  // }, [fetchData]);
+
+  const handleClick = () => {
     fetchData("https://api.freeapi.app/api/v1/public/cats/cat/random");
-  }, [fetchData]);
-
+  };
+  // let speechSynthesis = window.speechSynthesis;
+  // let currentUtterance = null;
+  let speechSynthesis = window.speechSynthesis;
+  let currentUtterance = null;
+  const speechDes = () => {
+    if (currentUtterance) {
+      speechSynthesis.cancel();
+    }
+    const description = data?.description;
+    currentUtterance = new SpeechSynthesisUtterance(description);
+    speechSynthesis.speak(currentUtterance);
+  };
+  const stopDes = ()=>{
+    if(currentUtterance){
+      speechSynthesis.cancel()
+      currentUtterance = null
+    }
+  }
   return (
     <div>
       {loading && <p>Loading...</p>}
       {error && <p style={{ color: "red" }}>Error: {error}</p>}
-      <div>
-        <p>{data?.alt_names}</p>
-      </div>
+      {/* <div>
+        <p className="bg-red-700">{data?.alt_names}</p>
+      </div> */}
       <div className="max-w-3xl mx-auto bg-white rounded-lg shadow-md overflow-hidden">
         <div className="p-6">
           <div className="flex items-center justify-between mb-6">
             <div>
-              <h1 className="text-2xl font-bold text-gray-800">
-                {data?.name}
-              </h1>
+              <div className="flex gap-20 ">
+                <h1 className="text-2xl font-bold text-gray-800">
+                  {data?.name}
+                </h1>
+                <button
+                  onClick={handleClick}
+                  className="bg-blue-700 px-4 py-1 text-white rounded-md "
+                >
+                  Random Cat
+                </button>
+              </div>
+
               <p className="text-gray-600">United States</p>
             </div>
             <img
@@ -65,14 +94,10 @@ export const ApiCallcustom = () => {
           </div>
           <div className="mb-6">
             <p className="font-semibold text-gray-700 mb-2">Description:</p>
-            <p className="text-gray-600">
-              York Chocolate cats are known to be true lap cats with a sweet
-              temperament. They love to be cuddled and petted. Their curious
-              nature makes them follow you all the time and participate in
-              almost everything you do, even if related to water: unlike many
-              other cats, York Chocolates love it.
-            </p>
+            <p className="text-gray-600">{data?.description}</p>
           </div>
+          <button onClick={speechDes} className="bg-green-800 px-4 py-2 text-white rounded-xl">Speck Description</button>
+          <button onClick={stopDes} className="bg-red-800 text-white px-4 py-2 rounded-lg ml-3">Stop Speech</button>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
             <div>
               <p className="font-semibold text-gray-700 mb-1">Adaptability:</p>
@@ -136,7 +161,7 @@ export const ApiCallcustom = () => {
               <p className="font-semibold text-gray-700 mb-1">Health Issues:</p>
               <div className="w-full bg-gray-200 rounded-full h-2.5">
                 <div
-                  className="bg-blue-600 h-2.5 rounded-full"
+                  className="bg-red-600 h-2.5 rounded-full"
                   style={{ width: "20%" }}
                 />
               </div>
