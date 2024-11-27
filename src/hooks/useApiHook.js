@@ -7,15 +7,15 @@ const apiReducer = (state, action) => {
   if (action.type == "success") {
     console.log("action success", action.type);
     
-    return { ...state, loading: false, data: Array.isArray(action.result.items) ? action.result.items : [], error: null };
+    return { ...state, loading: false, data: action.result.data, error: null };
   }
   if (action.type == "error") {
-    return { ...state, loading: false, data: [], error: action.result };
+    return { ...state, loading: false, data: null, error: action.result };
   }
   return state;
 };
 
-const initialstate = { data: [], loading: false, error: null };
+const initialstate = { data: null, loading: false, error: null };
 export const useApiHook = () => {
   const [state, dispatch] = useReducer(apiReducer, initialstate);
   console.log("state", state);
