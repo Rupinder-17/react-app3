@@ -240,7 +240,7 @@ export const ApiCallcustom = () => {
         </div>
       </div>
 
-      {Array.isArray(data) && data.length > 0 ? (
+      {/* {Array.isArray(data) && data.length > 0 ? (
         <ul>
           {data.map((item, index) => (
             <li key={index}>
@@ -252,7 +252,7 @@ export const ApiCallcustom = () => {
         </ul>
       ) : (
         !loading && <p>No data available</p>
-      )}
+      )} */}
     </div>
   );
 };
