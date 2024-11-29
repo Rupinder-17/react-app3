@@ -1,4 +1,5 @@
 import React, { useState, useReducer } from "react";
+import { useTheme } from "@/hooks/useTheme";
 
 const reducer = (state, action) => {
   if (action.type === "Add") {
@@ -29,6 +30,10 @@ export const TodoList = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
   const [inputState, setInputState] = useState("");
   const [edit, setEdit] = useState(false);
+
+  const { isDarkMode, toggleTheme, colors } = useTheme();
+  console.log(isDarkMode, toggleTheme, colors);
+  
   // const [updateId, setUpdateId] = useState(null);
 
   const handleAdd = () => {
@@ -54,10 +59,12 @@ export const TodoList = () => {
   const handlecheked = (id) => {
     dispatch({ type: "toggle", data: id });
   };
+  
 
   return (
-    <div className="max-w-md mx-auto p-6 bg-gray-100 rounded-lg shadow-lg mt-10">
-      <h1 className="text-2xl font-bold text-gray-700 mb-4">Todo List</h1>
+    <div style={{backgroundColor: colors.background, color: isDarkMode? "red": "blue"}} className="max-w-md mx-auto p-6  rounded-lg shadow-lg mt-10">
+      <h1 className="text-2xl font-bold  mb-4">Todo List</h1>
+      <button onClick={toggleTheme}>themeChange</button>
 
       <div className="flex items-center mb-4">
         <input

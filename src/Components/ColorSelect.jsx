@@ -1,7 +1,10 @@
 import React, { useState } from "react";
+import { useTheme } from "@/hooks/useTheme";
 
 export const ColorSelect = () => {
   const arr1 = ["rupinder", "harsimran", "jaskaran"];
+  const {colors} = useTheme()
+
 
   const backGroundColors = [
     { label: "Red", value: "bg-red" },
@@ -38,7 +41,7 @@ export const ColorSelect = () => {
   };
 
   return (
-    <div className=" w-96 px-5">
+    <div style={{backgroundColor: colors.background, color: colors.text}} className=" w-96 px-5">
       <select
         onChange={(e) => {
           setInputValue(e.target.value);

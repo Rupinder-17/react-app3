@@ -38,54 +38,55 @@ import { CustomTodoList1 } from './component2/CustomTodoList'
 import { MainComponent } from './component2/MainComponent'
 import { ApiCallcustom } from './component2/ApiCallcustom'
 import { App } from './App'
+import { ThemeProvider } from './Context/ThemeProvider'
 // import { AutocompleteExample } from './Components/Demo'
 
 
-createRoot(document.getElementById('root')).render(
+createRoot(document.getElementById("root")).render(
   <StrictMode>
-    {/* <MyFirstComponent/> */}
-    {/* <Display/> */}
-    {/* <SecondComponent/> */}
-    {/* <AgeCount/> */}
-    {/* <TableDashboard/>/ */}
-    {/* <AutocompleteExample/> */}
-    {/* <MultiDeleteitem/> */}
-    {/* <ColorBox/> */}
-    {/* <ColorsSelect/> */}
-    {/* <ColorSelects/> */}
-    {/* <ColorsSelect/> */}
-    {/* <UseEffectPractice/> */}
-    {/* <ColorSelect/> */}
-    {/* <UseEffect/> */}
-    {/* <CustomHook/> */}
-    {/* <CustomDataHook/> */}
-    {/* <ApiData/> */}
-    {/* <PostapiData/> */}
-    {/* <CommonApi/> */}
-    {/* <RiderApp/> */}
-    {/* <FreeApiData/> */}
-    {/* <Parent/> */}
-    {/* <ParentComponent/> */}
-    {/* <Pagination/> */}
-    {/* <Portfolio/> */}
-    {/* <CallBackHook/> */}
-    {/* <Test/> */}
-    {/* <TodoApi/> */}
-    {/* <ParentData/> */}
-    {/* <UseMemoHook/> */}
-    {/* <UseRef/> */}
-    {/* <TimerREf/> */}
-    {/* <UseReducerHook/> */}
-    {/* <TodoList/> */}
-    {/* <Todolist1/> */}
-    {/* <TodoApp/> */}
-    {/* <CustomTodoList/> */}
-    {/* <CustomTodoList1/> */}
-    {/* <MainComponent/> */}
-    {/* <TodoAdd/> */}
-    {/* <ApiCallcustom/> */}
-    <App/>
+    <ThemeProvider>
+      {/* <MyFirstComponent/> */}
+      {/* <Display/> */}
+      {/* <SecondComponent/> */}
+      {/* <AgeCount/> */}
+      {/* <TableDashboard/>/ */}
+      {/* <AutocompleteExample/> */}
+      {/* <MultiDeleteitem/> */}
+      {/* <ColorBox/> */}
+      <ColorsSelect/>
+      {/* <ColorSelects/> */}
+      {/* <ColorsSelect/> */}
+      {/* <UseEffectPractice/> */}
+      <ColorSelect/>
+      {/* <UseEffect/> */}
+      {/* <CustomHook/> */}
+      {/* <CustomDataHook/> */}
+      {/* <ApiData/> */}
+      {/* <PostapiData/> */}
+      {/* <CommonApi/> */}
+      {/* <RiderApp/> */}
+      {/* <FreeApiData/> */}
+      {/* <Parent/> */}
+      {/* <ParentComponent/> */}
+      {/* <Pagination/> */}
+      {/* <Portfolio/> */}
+      {/* <CallBackHook/> */}
+      {/* <Test/> */}
+      {/* <TodoApi/> */}
+      {/* <ParentData/> */}
+      {/* <UseMemoHook/> */}
+      {/* <UseRef/> */}
+      {/* <TimerREf/> */}
+      {/* <UseReducerHook/> */}
+      <TodoList/>
+      {/* <Todolist1/> */}
+      {/* <TodoApp/> */}
+      {/* <CustomTodoList/> */}
+      {/* <CustomTodoList1/> */}
+      {/* <MainComponent/> */}
+      {/* <TodoAdd/> */}
+      {/* <ApiCallcustom/> */}
+      {/* <App /> */}
+    </ThemeProvider>
   </StrictMode>
-  
-  
-)
+);
