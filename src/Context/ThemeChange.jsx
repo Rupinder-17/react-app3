@@ -1,11 +1,22 @@
-import React, { createContext } from 'react'
+import React, { createContext, useState } from "react";
 
+const MyContext = createContext();
+export const ThemeChange = ({ children }) => {
+  const [theme, setTheme] = useState(false);
 
-const myContext = createContext()
-export const ThemeChange = () => {
+  const toggleTheme = () => {
+    setTheme((prev) => !prev);
+  };
+
+  const themeChange = {
+    theme,
+    toggleTheme,
+    color: {
+      background: theme ? "red" : "white",
+      color: theme ? "white" : "red",
+    },
+  };
   return (
-    <div>
-
-    </div>
-  )
-}
+    <MyContext.Provider value={themeChange}>{children}</MyContext.Provider>
+  );
+};
