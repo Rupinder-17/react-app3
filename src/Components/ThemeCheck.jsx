@@ -7,7 +7,7 @@ export const ThemeCheck = () => {
     <div>
       <button
         onClick={toggleTheme}
-        style={{ background: colors.background, color: isDarkMode ?"red" : "blue" }}
+        style={{ background: isDarkMode ? "pink" : "green", color: isDarkMode ? "red" : "blue" }}
       >
         change theme
       </button>
