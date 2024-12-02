@@ -9,7 +9,7 @@ import { TableDashboard } from './Components/TableDashboard'
 import { MultiDeleteitem } from './Components/MultiDeleteitem'
 import { ColorsSelect } from './Components/ColorsSelect'
 import { UseEffectPractice } from './Components/UseEffectPractice'
-import { ColorSelect } from './Components/ColorSelect'
+// import { ColorSelect } from './Components/ColorSelect'
 import { UseEffect } from './Components/UseEffect'
 import { CustomHook } from './Components/CustomHook'
 import { CustomDataHook } from './Components/CustomDataHook'
@@ -31,7 +31,7 @@ import {  UseMemoHook } from './component2/Counter'
 import { UseRef } from './component2/UseRef'
 import { TimerREf } from './component2/TimerREf'
 import { UseReducerHook } from './component2/UseReducerHook'
-import { TodoList } from './component2/TodoList'
+// import { TodoList } from './component2/TodoList'
 import { Todolist1 } from './component2/Demo'
 import  { CustomTodoList } from './component2/Card'
 import { CustomTodoList1 } from './component2/CustomTodoList'
@@ -39,6 +39,8 @@ import { MainComponent } from './component2/MainComponent'
 import { ApiCallcustom } from './component2/ApiCallcustom'
 import { App } from './App'
 import { ThemeProvider } from './Context/ThemeProvider'
+import { MyContext } from './Context/ThemeChange'
+import { ThemeCheck } from './Components/ThemeCheck'
 // import { AutocompleteExample } from './Components/Demo'
 
 
@@ -53,11 +55,11 @@ createRoot(document.getElementById("root")).render(
       {/* <AutocompleteExample/> */}
       {/* <MultiDeleteitem/> */}
       {/* <ColorBox/> */}
-      <ColorsSelect/>
+      {/* <ColorsSelect /> */}
       {/* <ColorSelects/> */}
       {/* <ColorsSelect/> */}
       {/* <UseEffectPractice/> */}
-      <ColorSelect/>
+      {/* <ColorSelect /> */}
       {/* <UseEffect/> */}
       {/* <CustomHook/> */}
       {/* <CustomDataHook/> */}
@@ -78,15 +80,18 @@ createRoot(document.getElementById("root")).render(
       {/* <UseRef/> */}
       {/* <TimerREf/> */}
       {/* <UseReducerHook/> */}
-      <TodoList/>
+      {/* <TodoList /> */}
       {/* <Todolist1/> */}
       {/* <TodoApp/> */}
       {/* <CustomTodoList/> */}
       {/* <CustomTodoList1/> */}
       {/* <MainComponent/> */}
-      {/* <TodoAdd/> */}
-      {/* <ApiCallcustom/> */}
-      {/* <App /> */}
+    <ThemeCheck />
     </ThemeProvider>
+    {/* <TodoAdd/> */}
+    {/* <ApiCallcustom/> */}
+    {/* <App /> */}
+    {/* <MyContext> */}
+    {/* </MyContext> */}
   </StrictMode>
 );
