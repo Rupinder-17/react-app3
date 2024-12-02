@@ -1,6 +1,6 @@
 import React, { createContext, useState } from "react";
 
-const MyContext = createContext();
+ export const MyContext = createContext();
 export const ThemeChange = ({ children }) => {
   const [theme, setTheme] = useState(false);
 
