@@ -46,7 +46,8 @@ import { ThemeCheck } from './Components/ThemeCheck'
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <ThemeProvider>
+    {/* <MyContext> */}
+      <ThemeProvider>
       {/* <MyFirstComponent/> */}
       {/* <Display/> */}
       {/* <SecondComponent/> */}
@@ -80,18 +81,19 @@ createRoot(document.getElementById("root")).render(
       {/* <UseRef/> */}
       {/* <TimerREf/> */}
       {/* <UseReducerHook/> */}
+
       {/* <TodoList /> */}
       {/* <Todolist1/> */}
       {/* <TodoApp/> */}
       {/* <CustomTodoList/> */}
       {/* <CustomTodoList1/> */}
       {/* <MainComponent/> */}
-    <ThemeCheck />
-    </ThemeProvider>
-    {/* <TodoAdd/> */}
-    {/* <ApiCallcustom/> */}
-    {/* <App /> */}
-    {/* <MyContext> */}
+      
+      <ThemeCheck />
+      </ThemeProvider>
+      {/* <TodoAdd/> */}
+      {/* <ApiCallcustom/> */}
+      {/* <App /> */}
     {/* </MyContext> */}
   </StrictMode>
 );
